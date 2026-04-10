@@ -229,7 +229,7 @@ export default function DiscoveryPage() {
     } catch {
       // API unavailable — fall back to mock data
       if (page === 1) {
-        setRecipes(MOCK_RECIPES as Recipe[]);
+        setRecipes(MOCK_RECIPES as unknown as Recipe[]);
         setTotalRecipes(MOCK_TOTAL);
         // Start hero at a random recipe
         setHeroIndex(Math.floor(Math.random() * MOCK_RECIPES.length));

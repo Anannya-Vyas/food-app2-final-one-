@@ -84,7 +84,7 @@ function SearchContent() {
           r.title.toLowerCase().includes(q_lower) ||
           r.region?.name.toLowerCase().includes(q_lower) ||
           r.dietaryTags?.some(t => t.toLowerCase().includes(q_lower))
-        ) as Recipe[]
+        ) as unknown as Recipe[]
       );
     } finally { setLoading(false); }
   }, [region, dietaryTag, prepTime, minRating]);
