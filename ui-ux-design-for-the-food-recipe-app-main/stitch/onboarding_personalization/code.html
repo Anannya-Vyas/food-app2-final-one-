@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Culinary Compass | Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#eae8e5",
+              "secondary": "#4c56af",
+              "on-surface": "#1c1c1a",
+              "tertiary": "#825400",
+              "inverse-on-surface": "#f3f0ed",
+              "background": "#fcf9f6",
+              "inverse-surface": "#31302f",
+              "surface-variant": "#e5e2df",
+              "tertiary-container": "#a36b04",
+              "on-secondary-fixed": "#000767",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#bdc2ff",
+              "on-surface-variant": "#56423d",
+              "on-primary-container": "#120100",
+              "inverse-primary": "#ffb4a3",
+              "outline": "#8a726c",
+              "surface": "#fcf9f6",
+              "surface-tint": "#a03f29",
+              "secondary-fixed": "#e0e0ff",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-background": "#1c1c1a",
+              "on-tertiary-fixed": "#291800",
+              "on-primary-fixed": "#3d0700",
+              "surface-dim": "#dcdad7",
+              "on-secondary-container": "#27308a",
+              "primary-container": "#c0573e",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#feb956",
+              "outline-variant": "#ddc0ba",
+              "surface-container-highest": "#e5e2df",
+              "on-tertiary-fixed-variant": "#633f00",
+              "tertiary-fixed": "#ffddb4",
+              "surface-container": "#f0edea",
+              "on-secondary-fixed-variant": "#343d96",
+              "primary-fixed": "#ffdad2",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#ffffff",
+              "secondary-container": "#959efd",
+              "surface-container-low": "#f6f3f0",
+              "surface-bright": "#fcf9f6",
+              "primary": "#a03f28",
+              "on-primary-fixed-variant": "#812914",
+              "error": "#ba1a1a",
+              "primary-fixed-dim": "#ffb4a3"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-shadow {
+            box-shadow: 0 40px 40px -15px rgba(28, 28, 26, 0.06);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(160, 63, 40, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<main class="min-h-screen flex flex-col items-center pt-12 pb-32 px-6 max-w-7xl mx-auto relative overflow-hidden">
+<!-- Decorative Background Element -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Header / Logo Anchor -->
+<div class="w-full flex justify-between items-center mb-16">
+<div class="flex items-center gap-2">
+<span class="text-xl font-black text-on-background tracking-tighter font-headline">Culinary Compass</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label text-xs font-bold uppercase tracking-[0.05em] text-on-surface-variant">Step 1 of 3</span>
+<div class="w-24 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-1/3 h-full bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Conversational Intro -->
+<div class="max-w-3xl w-full text-center mb-20">
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-background mb-6 leading-[1.1]">
+                Calibrating your <span class="text-primary italic">gastronomic soul</span>.
+            </h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto font-medium">
+                Welcome to the Compass. To curate your global odyssey, we must first understand the spirit of your kitchen.
+            </p>
+</div>
+<!-- Section 1: Dietary Archetypes (Bento Grid) -->
+<div class="w-full mb-24">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<span class="font-label text-xs font-bold uppercase tracking-[0.2em] text-primary block mb-2">Archetype</span>
+<h2 class="font-headline text-3xl font-bold tracking-tight">Define your approach</h2>
+</div>
+<p class="text-on-surface-variant max-w-xs text-sm">Select the persona that best aligns with your culinary philosophy.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Card -->
+<button class="group relative md:col-span-7 h-[400px] rounded-xl overflow-hidden bg-surface-container-high transition-transform duration-300 hover:scale-[1.01] text-left">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" data-alt="dramatic close-up of a chef precisely placing a herb leaf on a minimalist plate with tweezers in a dark modern kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADeK0p3e_Om4ni_5Zk_Z_tmDdUE8pF2NVtkx7qeh0fZmfRwrPtKxA52yX1Ony8WX_7LMiBTZMPpRzp1AFQiDyjUkLOA6vaIq7n9oz2npi-h7mJQtObJhZIK-OMOYFrOzEw4S99vinmw_XyR4E_DjwlfTquUY2ZkuCuFZZqhQ2UZV2Q8x7vFAdeB16nbu1ODL5YjRSfYBRrfV-j-Yn2vLY5lwNU_PzvfWq8r09XKfFC1wUy880a4605pfB70XH_TbLxxUfCyzkaF2SK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline text-2xl font-bold text-white mb-2">Molecular Scientist</h3>
+<p class="text-white/70 max-w-md text-sm">Precision, innovation, and the alchemy of flavor through modern technique.</p>
+</div>
+<span class="material-symbols-outlined text-white text-3xl opacity-0 group-focus:opacity-100 group-hover:opacity-100 transition-opacity">check_circle</span>
+</div>
+</div>
+<div class="absolute top-6 left-6">
+<span class="bg-primary/20 backdrop-blur-md text-white px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider border border-white/10">High Precision</span>
+</div>
+</button>
+<!-- Vertical Card -->
+<button class="group relative md:col-span-5 h-[400px] rounded-xl overflow-hidden bg-surface-container transition-transform duration-300 hover:scale-[1.01] text-left">
+<img class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" data-alt="rustic wooden table with flour, fresh eggs, and handmade pasta in warm golden evening sunlight filtering through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv80KR4FICYIuwnkluW2nXbZlpHFEOYf9EUT95zGU6jbvt5EpVCXrQUkWOuRuJh4tIEfdeyx4-iMSsKCh9YDHxIV2k7aOCvIoK40oQTodPrp3sUUZ7B8iDVhfkfP1pTRvJLuScdJarINp2cnMOdtJs1sJwkN34oWLT5_kaJcCN7q-26tkJUYZyZ2VKNBZjoc8RnfDs7nw5hoipl6usD1e2zdfTpAeSHlFASljTr5cjt27yid-vGLnLXvdfxkRp0GrYoRn1pz9rcChA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="font-headline text-2xl font-bold text-white mb-2">The Traditionalist</h3>
+<p class="text-white/70 text-sm">Ancestral techniques and the preservation of cultural heritage through heirloom recipes.</p>
+</div>
+<span class="absolute top-6 right-6 material-symbols-outlined text-white text-2xl opacity-40">history_edu</span>
+</button>
+<!-- Small Grid Items -->
+<button class="group relative md:col-span-4 h-[280px] rounded-xl overflow-hidden bg-surface-container transition-transform duration-300 hover:scale-[1.01] text-left">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="vibrant overhead shot of a fresh green Buddha bowl with avocado, radishes, and vibrant purple cabbage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZVYdeURp2qYpPeaf7QsDbPCPELAtBwLIuPe7hMtY4DyDmD3gNQmvri13eSCke8S7TkKE02P43Inhmyj1l0p10bUBN3HKgvJA28uOm0DlploAJh75UTeQaK4RiQasPUORgioLvLqh13sy44BxYYmN4vOQZmmIW8HmaJx5E3NZb8nHAPpZzBlrCMBnxjaWcfcq5ntJpOf9Hghd6xh-Uv6THV7jl_gR-zdk6SAz49LqPK23yW5GvAQm4OyjtQp4PM9qrD5jfHbu3wk3O"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="font-headline text-xl font-bold text-white">Vitalist</h3>
+</div>
+</button>
+<button class="group relative md:col-span-4 h-[280px] rounded-xl overflow-hidden bg-surface-container transition-transform duration-300 hover:scale-[1.01] text-left">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="close-up of charcoal grilled meat with sparks and smoke rising against a dark outdoor background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALGBCF-vmzhmlw-1fJYbnpowrMaAawqdf7VWZdNjo9GVEQOY-a7UBD3Zlrr-JTne_yzIQUPv7oAfV1cirqeM-bpqn3-SoNo3uwqfdWeXGQRM8MjX5R_v8X4QkRylgqvarv612j-9H0Hl83WsgsqkuT2BwBbJo5qATu9ATRaTIXXwS2oLT9sJ-if31zPt6kHZLv0ofJ7Me9sR-WKD7J1hyE-29ee5ffSAa_MupdGfhsaeOAAOIoJAlJOle6An5duOUbvZ4fgHqVRfCc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="font-headline text-xl font-bold text-white">Primalist</h3>
+</div>
+</button>
+<button class="group relative md:col-span-4 h-[280px] rounded-xl overflow-hidden bg-surface-container transition-transform duration-300 hover:scale-[1.01] text-left">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="eclectic spread of tapas and small plates on a colorful mosaic tile table in a sun-drenched courtyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbLNBG7lv6dAwm-yfVOQfd2FuB1TNSscwVFF_ItlvElJVCrDiShlGaWb8YsaOu45kCO5Wj5TTR_mc7lVpdvikGoBkcqQzsjrqkxvypS7PL1D1-Z5kxg7VRiZxG3UfxPb7b6vbXYY2L3phT9JZPXlLS8G29IV9qXZmjtYjNGWnP0ft3PbZ2dEGzC5ahyb7bp0WYDnYOMv8nCLQyqD3xjLYgvzzJleTV2jxZxy2z4_grh5ZBM29UN9mptBbU-9lw7Fl-y3MiGBu3hSut"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="font-headline text-xl font-bold text-white">The Explorer</h3>
+</div>
+</button>
+</div>
+</div>
+<!-- Section 2: Flavor Spectrum (Interactive Chips) -->
+<div class="w-full mb-24">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<span class="font-label text-xs font-bold uppercase tracking-[0.2em] text-secondary block mb-2">Sensory Profile</span>
+<h2 class="font-headline text-3xl font-bold tracking-tight">Your Flavor Spectrum</h2>
+</div>
+<p class="text-on-surface-variant max-w-xs text-sm">Select multiple notes that resonate with your palate.</p>
+</div>
+<!-- Flavor Spectrum Visualization -->
+<div class="w-full h-2 bg-gradient-to-r from-primary via-tertiary to-secondary rounded-full mb-12 relative">
+<div class="absolute -top-6 left-0 text-[10px] font-bold uppercase tracking-widest text-primary">Warm / Earthy</div>
+<div class="absolute -top-6 right-0 text-[10px] font-bold uppercase tracking-widest text-secondary">Cool / Deep</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<!-- Flavor Chips -->
+<button class="px-8 py-4 rounded-full bg-surface-container-low border border-outline/10 text-on-surface font-semibold hover:bg-tertiary-fixed transition-all flex items-center gap-3 active:scale-95">
+<span class="material-symbols-outlined text-tertiary">potted_plant</span> Umami
+                </button>
+<button class="px-8 py-4 rounded-full bg-surface-container-low border border-outline/10 text-on-surface font-semibold hover:bg-tertiary-fixed transition-all flex items-center gap-3 active:scale-95">
+<span class="material-symbols-outlined text-primary">local_fire_department</span> Smoky
+                </button>
+<button class="px-8 py-4 rounded-full bg-primary text-white font-semibold flex items-center gap-3 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">psychology</span> Fermented
+                    <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="px-8 py-4 rounded-full bg-surface-container-low border border-outline/10 text-on-surface font-semibold hover:bg-tertiary-fixed transition-all flex items-center gap-3 active:scale-95">
+<span class="material-symbols-outlined text-secondary">ac_unit</span> Botanical
+                </button>
+<button class="px-8 py-4 rounded-full bg-surface-container-low border border-outline/10 text-on-surface font-semibold hover:bg-tertiary-fixed transition-all flex items-center gap-3 active:scale-95">
+<span class="material-symbols-outlined text-tertiary">bakery_dining</span> Toasted
+                </button>
+<button class="px-8 py-4 rounded-full bg-secondary text-white font-semibold flex items-center gap-3 shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined">waves</span> Briny
+                    <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="px-8 py-4 rounded-full bg-surface-container-low border border-outline/10 text-on-surface font-semibold hover:bg-tertiary-fixed transition-all flex items-center gap-3 active:scale-95">
+<span class="material-symbols-outlined text-primary">nutrition</span> Verdant
+                </button>
+</div>
+</div>
+<!-- Section 3: Cultural Interests (Asymmetric List) -->
+<div class="w-full mb-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1">
+<img class="w-full aspect-square object-cover rounded-[2rem] shadow-2xl rotate-3" data-alt="hand-drawn vintage world map on old parchment with sketches of various global food items and cooking utensils" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC9QkCe70ouhlvLp-5rMSI2cMPLFeKfcOGDyAPBqyGnpBuvr-XGaluXrtIZtQrTnXT2rmYlogzcmb6rORAiywwZMJ7K_-VBnQRkRAR0jUiTtKCMRtqKiCejEY4PA2tajEF5K0uUWFXhKTeeh_3umOh9tQEmQqyeZWWbjCicCM0CP9VzYuE1c78rX-344c_cHrM8AWjUjRRogEOnZnwpcqrwhHku-pDmi6HH6jtIcrFDrLRD6H9PXZCyAuC0pdJaBsytuyO1JqSI67h"/>
+</div>
+<div class="order-1 md:order-2">
+<span class="font-label text-xs font-bold uppercase tracking-[0.2em] text-primary block mb-2">Geography</span>
+<h2 class="font-headline text-3xl font-bold tracking-tight mb-6">Cultural Compass</h2>
+<p class="text-on-surface-variant mb-10 leading-relaxed">Where should our navigation begin? Select the regions whose culinary languages you wish to master.</p>
+<div class="space-y-3">
+<label class="group flex items-center justify-between p-5 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center font-headline font-bold text-on-tertiary-fixed">01</span>
+<span class="font-semibold text-lg">The Silk Road (Central Asia)</span>
+</div>
+<input class="w-6 h-6 rounded-full border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="group flex items-center justify-between p-5 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center font-headline font-bold text-on-secondary-fixed">02</span>
+<span class="font-semibold text-lg">Mesoamerican Roots</span>
+</div>
+<input checked="" class="w-6 h-6 rounded-full border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="group flex items-center justify-between p-5 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center font-headline font-bold text-on-primary-fixed">03</span>
+<span class="font-semibold text-lg">Nordic Terroir</span>
+</div>
+<input class="w-6 h-6 rounded-full border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="group flex items-center justify-between p-5 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-headline font-bold text-on-surface-variant">04</span>
+<span class="font-semibold text-lg">Levantine Traditions</span>
+</div>
+<input checked="" class="w-6 h-6 rounded-full border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Sticky Navigation Footer (Onboarding Specific) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-xl z-50">
+<div class="bg-on-background/95 backdrop-blur-xl rounded-full p-2 flex items-center justify-between shadow-2xl border border-white/10">
+<button class="px-6 py-4 text-white font-label text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity">
+                    Skip Setup
+                </button>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container px-10 py-4 rounded-full text-white font-bold tracking-tight flex items-center gap-2 hover:scale-[1.02] active:scale-95 transition-all">
+                    Next Step
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Suppressed per rule for transactional/onboarding flow) -->
+<!-- But TopAppBar branding included in mobile context via the custom header -->
+</body></html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Culinary Academy | Culinary Compass</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#eae8e5",
+              "secondary": "#4c56af",
+              "on-surface": "#1c1c1a",
+              "tertiary": "#825400",
+              "inverse-on-surface": "#f3f0ed",
+              "background": "#fcf9f6",
+              "inverse-surface": "#31302f",
+              "surface-variant": "#e5e2df",
+              "tertiary-container": "#a36b04",
+              "on-secondary-fixed": "#000767",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#bdc2ff",
+              "on-surface-variant": "#56423d",
+              "on-primary-container": "#120100",
+              "inverse-primary": "#ffb4a3",
+              "outline": "#8a726c",
+              "surface": "#fcf9f6",
+              "surface-tint": "#a03f29",
+              "secondary-fixed": "#e0e0ff",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-background": "#1c1c1a",
+              "on-tertiary-fixed": "#291800",
+              "on-primary-fixed": "#3d0700",
+              "surface-dim": "#dcdad7",
+              "on-secondary-container": "#27308a",
+              "primary-container": "#c0573e",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#feb956",
+              "outline-variant": "#ddc0ba",
+              "surface-container-highest": "#e5e2df",
+              "on-tertiary-fixed-variant": "#633f00",
+              "tertiary-fixed": "#ffddb4",
+              "surface-container": "#f0edea",
+              "on-secondary-fixed-variant": "#343d96",
+              "primary-fixed": "#ffdad2",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#ffffff",
+              "secondary-container": "#959efd",
+              "surface-container-low": "#f6f3f0",
+              "surface-bright": "#fcf9f6",
+              "primary": "#a03f28",
+              "on-primary-fixed-variant": "#812914",
+              "error": "#ba1a1a",
+              "primary-fixed-dim": "#ffb4a3"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "3xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-card-gradient {
+            background: linear-gradient(135deg, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased pb-32">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#fcf9f6] dark:bg-[#1c1c1a] shadow-[0_40px_40px_-15px_rgba(28,28,26,0.06)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-xl font-black text-[#1c1c1a] dark:text-[#fcf9f6] tracking-tighter font-headline">
+                Culinary Compass
+            </div>
+<nav class="hidden md:flex items-center space-x-8 font-headline font-bold text-sm tracking-tight">
+<a class="text-[#56423d] dark:text-[#e5e2df] hover:opacity-80 transition-opacity" href="#">Explore</a>
+<a class="text-[#56423d] dark:text-[#e5e2df] hover:opacity-80 transition-opacity" href="#">Market</a>
+<a class="text-[#a03f28] dark:text-[#c0573e]" href="#">Academy</a>
+<a class="text-[#56423d] dark:text-[#e5e2df] hover:opacity-80 transition-opacity" href="#">Events</a>
+</nav>
+<div class="flex items-center space-x-4">
+<div class="hidden sm:flex items-center space-x-3">
+<span class="material-symbols-outlined text-[#a03f28] p-2 hover:bg-surface-container rounded-full transition-colors">shopping_basket</span>
+<span class="material-symbols-outlined text-[#a03f28] p-2 hover:bg-surface-container rounded-full transition-colors">calendar_month</span>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary/10">
+<img alt="User profile avatar" data-alt="close up professional headshot of a culinary student in a white chef coat smiling softly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClk09EbomTi5qvuRKVuqPz1wpye9Tm4c6xyXE7UK4THGtURw4H5qnAK3EjAithIbwF0Q0-pmcskScGAD_SWxktVNDcX4McpLq1bM8BiQFG_iYids0DeflAiDn7oNS3PV1VHYLpqHi_jKsHbaRxfV8gtWzam_HBAXdHOSce40BvkNWIIq5E-NJ_uVunVEhCZygZCv57yzOHozBcov643Gq4msVpDrOkyjmrNhJXMi5T4p_-W4Vi0F82UdlwyFXQntUEZyK3QqVGpJju"/>
+</div>
+</div>
+</div>
+<div class="bg-[#f0edea] dark:bg-[#2a2a28] h-[1px] w-full"></div>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-24">
+<!-- Hero Header -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label text-xs font-bold tracking-[0.1em] uppercase text-primary mb-2 block">Your Learning Journey</span>
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight text-on-background">Culinary Academy</h1>
+</div>
+<div class="flex items-center gap-2 bg-tertiary-fixed text-on-tertiary-fixed px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-bold text-sm">840 XP · Pro Level</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Featured Masterclass: Large Bento -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container-lowest rounded-3xl shadow-sm hover:scale-[1.01] transition-transform duration-300">
+<div class="aspect-[16/9] md:aspect-auto md:h-[420px] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="cinematic shot of an expert chef tempering dark chocolate on a marble slab with precise hand movements in a sunlit kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Oo6s5UhmyVZ794CrO-3hEsOgx7f-Fq-Jk4-TTDP99qz6ZN3g1DleLe43nYmWdexW439mKO7s8CpXDY-nz1w38uQEoOPvQmPaJHyau1klrsr9YhU6m76Cqfis5DlXsCMtkAynccN_7OdodzqHLOBmnjW49kW7HG7Eexi2-GME81IxMGlPNWTMZK56pRS5rXUXqcxBMqzq17KzjQ2XZM2Zlh7eXVtVefUU3p8W6HtGlukdSlCRCHP8za9-ADThoBVUHZ6Hmp77W7tQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex items-center gap-2 mb-3">
+<span class="bg-secondary text-on-secondary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Now Learning</span>
+<span class="text-white/80 text-sm font-medium">Lesson 4 of 12</span>
+</div>
+<h2 class="font-headline text-3xl font-bold text-white mb-4">The Art of Modern Fermentation</h2>
+<div class="flex flex-wrap items-center gap-6">
+<div class="flex-1 max-w-xs">
+<div class="flex justify-between text-xs text-white/70 mb-2">
+<span>Course Progress</span>
+<span>35%</span>
+</div>
+<div class="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[35%] rounded-full"></div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">play_arrow</span>
+                                Resume Class
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Metrics: Stacked Bento -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Skill Radar / Quick Stats -->
+<div class="flex-1 bg-surface-container rounded-3xl p-6 relative overflow-hidden">
+<h3 class="font-headline text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                        Skill Distribution
+                    </h3>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+<span>Knife Skills</span>
+<span>Expert</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-secondary w-[92%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+<span>Pastry &amp; Baking</span>
+<span>Intermediate</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-secondary w-[58%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+<span>Sauce Work</span>
+<span>Beginner</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-secondary w-[24%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/20">
+<p class="text-sm text-on-surface-variant italic">"Your precision in julienne cuts improved by 15% this week."</p>
+</div>
+</div>
+<!-- Live Session Alert -->
+<div class="bg-secondary text-on-secondary rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]">sensors</span>
+</div>
+<div>
+<div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.1em] mb-2">
+<span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            Live in 2 hours
+                        </div>
+<h4 class="font-headline text-xl font-bold leading-tight mb-2">Umami Science with Dr. Arisaka</h4>
+</div>
+<button class="w-full mt-4 bg-white/10 hover:bg-white/20 transition-colors py-3 rounded-2xl font-bold text-sm backdrop-blur-md border border-white/20">
+                        Set Reminder
+                    </button>
+</div>
+</div>
+<!-- Technical Skill Drills: Horizontal Bento Section -->
+<div class="md:col-span-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-2xl font-extrabold tracking-tight">Technical Skill Drills</h3>
+<a class="text-primary font-bold text-sm hover:underline" href="#">View Practice Library</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Drill 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-3xl overflow-hidden mb-3 bg-surface-container relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="top down view of precise vegetable cuts including julienne carrots and brunoise onions on a wooden cutting board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgZJD-Y8Q7r5UB5_aRB5JvgDE8CU70AbI7JLDBtd7NiYoCdYACMOulOm5iFzusUpL4QTxWqLgXczRLewyDHj86SPQY0H0on1n-Z2SuAcFrB_WFDQBEafu-4_EhcyNrfFLd5S0VGAbxtveoIPACAZ9ZxLByBIIIjRyIzbBL23rGSiDMj1UsEbCACc9q7Ryp3Q2sAsVES-JyCsYRKqVfZ6d9K1HLyBwNWe_KjTM-rMHMvX1jPBzTNP1aKqA6yYtvWxpLvrcg5Rke704z"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-white/90 p-3 rounded-full text-primary shadow-xl">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+</div>
+<h5 class="font-bold text-sm">Advanced Knife Skills</h5>
+<p class="text-xs text-on-surface-variant">12 Drills · 45 mins total</p>
+</div>
+<!-- Drill 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-3xl overflow-hidden mb-3 bg-surface-container relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="close up of bubbling sourdough starter in a glass jar with earthy textures and natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN211Y-E_zkRpGF_QbeoC__JJUjAeX8p1wLCNwHGPdW5qGpXkzmwX_zuboJK9xlewsLjt_LHHnv_lGRRR4WdYWm4h6HskrpR8FROxY9zBDInmxyANNjsSaffFvr2i5VszjoVkH1KGaKGT0CVkbGDtwStJnGxaN7D8NufgweEVzFdEIXSi21mb7xCZDyxOQzVVory6CDfUaJydbvvIIy6VrdQwYr4sDPBjfCQ4F0bGEfAEsnlY_C5B558OW7PWNE2NxElopw9EXGpSA"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-white/90 p-3 rounded-full text-primary shadow-xl">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+</div>
+<h5 class="font-bold text-sm">Fermentation Basics</h5>
+<p class="text-xs text-on-surface-variant">8 Drills · 1.5 hrs total</p>
+</div>
+<!-- Drill 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-3xl overflow-hidden mb-3 bg-surface-container relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="chef hands precisely piping dark chocolate mousse into a geometric mold in a bright professional pastry kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2LJ4T4h-GTf_UuaAYDf7Y2samhH1tXViGlch8i-CE0xwFJOIaHGC5W_zI4JYoUFix-x51i2lG0bLSUsAnWd632oLpbYSUcOgmhVQy349FhG6yjsuxbUVV_n_DMUjKMIVwqgQspzO3ufyBP8Uy-8dTHYI0LddPbZo057UKjoI2OkfOxaBxvzvh5BZsRfrZLNwEolH4KyIRn7Z9im7ZZaoQDqFaTDmOEMAALJVqmZUg1wioXBrbcZOln9KrJbsMWbik31Zolk5qNR5O"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-white/90 p-3 rounded-full text-primary shadow-xl">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+</div>
+<h5 class="font-bold text-sm">Pastry Precision</h5>
+<p class="text-xs text-on-surface-variant">15 Drills · 2 hrs total</p>
+</div>
+<!-- Drill 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-3xl overflow-hidden mb-3 bg-surface-container relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="close up of fresh herbs and spices being ground in a stone mortar and pestle with vibrant colors and rich textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZmlSwSKK92WB9K_qL1tM9LkcNSGNATTnzjdPdvVr6z-3Z_osJ8i-_EJu80dLIwTcTcM-udkGnyx2Gf3wG_2vCAr-x3Szjzbt7WI0cyejFDDBWQfqGmakSsAumsqdQuxExyu89oLsSYeQU12mm9QMHZyyUqfctgcRTDZ6iVTnyQ4cbMoM2dzSulHS-f0E_fXhyG1fbU4cF53eKY2xi2OOB9ScY8bsi32hbFet483Sur2Mo0XqVcZ-CWZfVxIo-7yCVNAqxtMaiw_m8"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-white/90 p-3 rounded-full text-primary shadow-xl">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+</div>
+<h5 class="font-bold text-sm">Spice Archeology</h5>
+<p class="text-xs text-on-surface-variant">5 Drills · 30 mins total</p>
+</div>
+</div>
+</div>
+<!-- Upcoming Live Sessions: Wide List-Bento Hybrid -->
+<div class="md:col-span-12">
+<div class="bg-surface-container-low rounded-[2rem] p-8">
+<h3 class="font-headline text-2xl font-extrabold mb-8">Upcoming Live Sessions</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Session 1 -->
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-16 h-16 bg-tertiary-fixed rounded-2xl flex flex-col items-center justify-center font-headline font-bold">
+<span class="text-xs uppercase opacity-60">Oct</span>
+<span class="text-xl">24</span>
+</div>
+<div>
+<h6 class="font-bold text-on-surface leading-tight">Mastering Pan-Asian Sauces</h6>
+<p class="text-sm text-on-surface-variant mt-1">Chef Kenji Lopez · 18:00 GMT</p>
+<div class="flex items-center gap-3 mt-3">
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded-full font-bold uppercase">Theory</span>
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded-full font-bold uppercase">Intermediate</span>
+</div>
+</div>
+</div>
+<!-- Session 2 -->
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-16 h-16 bg-primary-fixed rounded-2xl flex flex-col items-center justify-center font-headline font-bold">
+<span class="text-xs uppercase opacity-60">Oct</span>
+<span class="text-xl">27</span>
+</div>
+<div>
+<h6 class="font-bold text-on-surface leading-tight">Molecular Gastronomy 101</h6>
+<p class="text-sm text-on-surface-variant mt-1">Dr. Elena Grant · 15:30 GMT</p>
+<div class="flex items-center gap-3 mt-3">
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded-full font-bold uppercase">Science</span>
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded-full font-bold uppercase">Expert</span>
+</div>
+</div>
+</div>
+<!-- Session 3 -->
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-16 h-16 bg-secondary-fixed rounded-2xl flex flex-col items-center justify-center font-headline font-bold">
+<span class="text-xs uppercase opacity-60">Nov</span>
+<span class="text-xl">02</span>
+</div>
+<div>
+<h6 class="font-bold text-on-surface leading-tight">Winter Harvest Preserves</h6>
+<p class="text-sm text-on-surface-variant mt-1">Marcos Rivera · 10:00 GMT</p>
+<div class="flex items-center gap-3 mt-3">
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded-full font-bold uppercase">Seasonal</span>
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded-full font-bold uppercase">Beginner</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fcf9f6]/60 dark:bg-[#1c1c1a]/60 backdrop-blur-xl z-50 rounded-t-[1.5rem] shadow-[0_-10px_40px_rgba(28,28,26,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-[#e5e2df] opacity-60 px-4 py-1.5 transition-all duration-300 ease-out hover:scale-105" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-headline text-[10px] font-bold tracking-[0.05em] uppercase mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-[#e5e2df] opacity-60 px-4 py-1.5 transition-all duration-300 ease-out hover:scale-105" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-headline text-[10px] font-bold tracking-[0.05em] uppercase mt-1">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#ffddb4] dark:bg-[#a03f28] text-[#a03f28] dark:text-[#ffddb4] rounded-[0.75rem] px-4 py-1.5 transition-all duration-300 ease-out hover:scale-105" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-headline text-[10px] font-bold tracking-[0.05em] uppercase mt-1">Academy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-[#e5e2df] opacity-60 px-4 py-1.5 transition-all duration-300 ease-out hover:scale-105" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-headline text-[10px] font-bold tracking-[0.05em] uppercase mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-[#e5e2df] opacity-60 px-4 py-1.5 transition-all duration-300 ease-out hover:scale-105" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-headline text-[10px] font-bold tracking-[0.05em] uppercase mt-1">Profile</span>
+</a>
+</nav>
+<!-- FAB (Suppressed on Academy Screen per logic rules, but here as a placeholder for layout context if needed in other views) -->
+</body></html>

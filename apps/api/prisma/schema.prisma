@@ -1,0 +1,211 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgvector(map: "vector")]
+}
+
+model User {
+  id                  String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email               String    @unique
+  passwordHash        String?   @map("password_hash")
+  oauthProvider       String?   @map("oauth_provider")
+  oauthId             String?   @map("oauth_id")
+  displayName         String    @map("display_name")
+  avatarUrl           String?   @map("avatar_url")
+  bio                 String?
+  preferredLang       String    @default("en") @map("preferred_lang")
+  isPremium           Boolean   @default(false) @map("is_premium")
+  subscriptionStatus  String    @default("trial") @map("subscription_status")
+  trialStartDate      DateTime  @default(now()) @map("trial_start_date") @db.Timestamptz
+  subscriptionId      String?   @map("subscription_id")
+  nextBillingDate     DateTime? @map("next_billing_date") @db.Timestamptz
+  profileVisibility         String    @default("public") @map("profile_visibility")
+  notificationPreferences   Json?     @map("notification_preferences")
+  createdAt                 DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt                 DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+
+  recipes              Recipe[]
+  ratings              Rating[]
+  subscriptionEvents   SubscriptionEvent[]
+  aiUsage              AiUsage[]
+  userLessonProgress   UserLessonProgress[]
+  marketplaceListings  MarketplaceListing[]
+  notifications        Notification[]
+
+  @@map("users")
+}
+
+model Region {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name      String
+  country   String
+  subRegion String?  @map("sub_region")
+  latitude  Decimal?
+  longitude Decimal?
+
+  recipes             Recipe[]
+  marketplaceListings MarketplaceListing[]
+
+  @@map("regions")
+}
+
+model Recipe {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title           String
+  authorId        String?  @map("author_id") @db.Uuid
+  regionId        String?  @map("region_id") @db.Uuid
+  ingredients     Json
+  steps           Json
+  prepTimeMins    Int?     @map("prep_time_mins")
+  cookTimeMins    Int?     @map("cook_time_mins")
+  servings        Int?
+  dietaryTags     String[] @map("dietary_tags")
+  flavorSpectrum  Json?    @map("flavor_spectrum")
+  coverImageUrl   String?  @map("cover_image_url")
+  isFamilyRecipe  Boolean  @default(false) @map("is_family_recipe")
+  status          String   @default("pending")
+  rejectionReason String?  @map("rejection_reason")
+  embedding       Unsupported("vector(1536)")?
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  author       User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  region       Region? @relation(fields: [regionId], references: [id])
+  ratings      Rating[]
+  translations RecipeTranslation[]
+
+  @@index([regionId])
+  @@index([status])
+  @@map("recipes")
+}
+
+model Rating {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  recipeId  String   @map("recipe_id") @db.Uuid
+  value     Int      @db.SmallInt
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, recipeId])
+  @@map("ratings")
+}
+
+model RecipeTranslation {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  recipeId    String   @map("recipe_id") @db.Uuid
+  language    String
+  title       String?
+  steps       Json?
+  ingredients Json?
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([recipeId, language])
+  @@map("recipe_translations")
+}
+
+model SubscriptionEvent {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId          String?  @map("user_id") @db.Uuid
+  eventType       String   @map("event_type")
+  razorpayEventId String?  @unique @map("razorpay_event_id")
+  payload         Json?
+  processedAt     DateTime @default(now()) @map("processed_at") @db.Timestamptz
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("subscription_events")
+}
+
+model AiUsage {
+  userId     String   @map("user_id") @db.Uuid
+  date       DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+  fixerCount Int      @default(0) @map("fixer_count")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, date])
+  @@map("ai_usage")
+}
+
+model Course {
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title       String
+  category    String
+  description String?
+  isPremium   Boolean @default(false) @map("is_premium")
+
+  lessons Lesson[]
+
+  @@map("courses")
+}
+
+model Lesson {
+  id         String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  courseId   String  @map("course_id") @db.Uuid
+  title      String
+  content    Json?
+  orderIndex Int     @map("order_index")
+  isFree     Boolean @default(false) @map("is_free")
+
+  course   Course               @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  progress UserLessonProgress[]
+
+  @@map("lessons")
+}
+
+model UserLessonProgress {
+  userId      String    @map("user_id") @db.Uuid
+  lessonId    String    @map("lesson_id") @db.Uuid
+  completed   Boolean   @default(false)
+  completedAt DateTime? @map("completed_at") @db.Timestamptz
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@id([userId, lessonId])
+  @@map("user_lesson_progress")
+}
+
+model MarketplaceListing {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  supplierId     String?  @map("supplier_id") @db.Uuid
+  ingredientName String   @map("ingredient_name")
+  regionId       String?  @map("region_id") @db.Uuid
+  price          Decimal? @db.Decimal(10, 2)
+  unit           String?
+  availability   String   @default("available")
+  contactUrl     String?  @map("contact_url")
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  supplier User?   @relation(fields: [supplierId], references: [id])
+  region   Region? @relation(fields: [regionId], references: [id])
+
+  @@map("marketplace_listings")
+}
+
+model Notification {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  type      String
+  payload   Json?
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}

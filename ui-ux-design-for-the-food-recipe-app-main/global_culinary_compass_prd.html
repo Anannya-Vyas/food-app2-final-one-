@@ -1,0 +1,26 @@
+# Project Requirements Document: "Global Culinary Compass" (Recipe App)
+
+## 1. Overview
+A high-end, AI-powered recipe and culinary discovery platform. The app focuses on hyper-local food discovery (what to eat when visiting a specific state/country), community-driven recipe sharing (grandmother's secrets), and advanced AI tools for recipe correction and nutritional analysis.
+
+## 2. Core Features
+*   **Hyper-Local Discovery:** GPS-based suggestions for "must-try" dishes and famous local recipes based on the user's current location or a searched destination.
+*   **Community Recipe Hub:** A social platform for users to share family recipes, including video feeds and "Instagram-style" social interactions.
+*   **AI "Recipe Fixer":** An LLM-powered assistant (Gemini/GPT-4o) that helps users troubleshoot cooking issues (e.g., "too much salt") in real-time.
+*   **Image-to-Calorie Scanner:** Computer vision (YOLOv8/ViT) to identify food from photos and estimate nutritional value based on regional variations.
+*   **Audible Recipes:** High-quality AI voice synthesis (ElevenLabs) for hands-free cooking instructions.
+*   **Dynamic Theming:** UI accents that shift based on the cultural origin of the recipe being viewed.
+
+## 3. Tech Stack (Architectural Foundation)
+*   **Frontend:** Flutter (for high-performance, cross-platform UI and smooth animations).
+*   **Backend:** Python (FastAPI) for ML integration and high-speed API performance.
+*   **Database:** 
+    *   PostgreSQL (with pgvector) for AI-powered semantic search.
+    *   MongoDB for the flexible, social-media-style recipe and video feeds.
+*   **Search:** Meilisearch for instant, typo-tolerant "Google-like" discovery.
+*   **AI/ML:** YOLOv8 for food detection, Gemini/GPT-4o for the Recipe Fixer, and Google Cloud Translation for localization.
+
+## 4. Visual Direction
+*   **Layout:** Bento Grid style for a clean, modular, and modern aesthetic.
+*   **Interaction:** Micro-interactions and physics-based animations (Rive/Lottie) for high engagement.
+*   **Vibe:** Professional, high-end, and "industrial-grade" while remaining warm and community-focused.

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Gastronome | AI Kitchen Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e0e0ff",
+              "outline": "#8a726c",
+              "on-error": "#ffffff",
+              "background": "#fcf9f6",
+              "on-surface": "#1c1c1a",
+              "on-secondary-fixed": "#000767",
+              "secondary-container": "#959efd",
+              "surface-tint": "#a03f29",
+              "surface-container-low": "#f6f3f0",
+              "surface-container": "#f0edea",
+              "on-tertiary-fixed-variant": "#633f00",
+              "primary-fixed": "#ffdad2",
+              "surface-bright": "#fcf9f6",
+              "secondary-fixed-dim": "#bdc2ff",
+              "on-primary-fixed": "#3d0700",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e5e2df",
+              "tertiary": "#825400",
+              "on-primary-fixed-variant": "#812914",
+              "primary-container": "#c0573e",
+              "outline-variant": "#ddc0ba",
+              "tertiary-fixed-dim": "#feb956",
+              "surface-dim": "#dcdad7",
+              "on-secondary-fixed-variant": "#343d96",
+              "surface-container-high": "#eae8e5",
+              "on-secondary-container": "#27308a",
+              "on-surface-variant": "#56423d",
+              "inverse-primary": "#ffb4a3",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#ffddb4",
+              "surface-variant": "#e5e2df",
+              "tertiary-container": "#a36b04",
+              "primary": "#a03f28",
+              "secondary": "#4c56af",
+              "on-tertiary-container": "#ffffff",
+              "on-primary-container": "#120100",
+              "inverse-surface": "#31302f",
+              "inverse-on-surface": "#f3f0ed",
+              "primary-fixed-dim": "#ffb4a3",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "on-secondary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c1a",
+              "surface": "#fcf9f6",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #ddc0ba; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 w-full bg-[#fcf9f6] dark:bg-stone-950 shadow-[0_0_40px_rgba(28,28,26,0.06)]">
+<div class="flex items-center gap-3">
+<span class="text-2xl font-bold tracking-tighter text-[#a03f28] dark:text-[#c0573e] font-headline">Culinary Compass</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6 items-center">
+<a class="text-[#a03f28] font-bold font-headline transition-all duration-200" href="#">Assistant</a>
+<a class="text-[#56423d] dark:text-stone-400 hover:bg-[#e5e2df] dark:hover:bg-stone-800 px-3 py-1 rounded-full transition-all" href="#">Discovery</a>
+<a class="text-[#56423d] dark:text-stone-400 hover:bg-[#e5e2df] dark:hover:bg-stone-800 px-3 py-1 rounded-full transition-all" href="#">Heritage</a>
+</nav>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<button class="p-2 rounded-full hover:bg-[#e5e2df] transition-all duration-200 active:scale-90">
+<span class="material-symbols-outlined text-[#a03f28]">account_circle</span>
+</button>
+</div>
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Side Navigation Shell (Desktop Only) -->
+<aside class="hidden md:flex flex-col py-8 gap-6 h-screen w-64 fixed left-0 top-0 bg-[#fcf9f6] dark:bg-stone-950 z-40 border-r-0 pt-24">
+<div class="px-6 mb-4">
+<h2 class="font-black text-[#a03f28] text-lg uppercase tracking-wider font-headline">Digital Gastronome</h2>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-[0.1em] font-label">Precision AI Kitchen</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-[#a03f28] dark:text-[#c0573e] font-bold border-l-4 border-[#a03f28] pl-4 py-3 bg-surface-container-low transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label text-xs uppercase tracking-[0.05em]">Assistant</span>
+</a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] dark:hover:bg-stone-900 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="explore_neighbor">explore_nearby</span>
+<span class="font-label text-xs uppercase tracking-[0.05em]">Discovery</span>
+</a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] dark:hover:bg-stone-900 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label text-xs uppercase tracking-[0.05em]">Heritage</span>
+</a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] dark:hover:bg-stone-900 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="blender">blender</span>
+<span class="font-label text-xs uppercase tracking-[0.05em]">Studio</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-24 md:pl-64 min-h-screen">
+<div class="max-w-[1400px] mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8">
+<!-- Left Side: Conversational Interface -->
+<section class="lg:w-3/5 flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm min-h-[600px] flex flex-col border border-outline-variant/10">
+<!-- Header -->
+<div class="flex items-center justify-between border-b border-surface-container-high pb-4 mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl" data-icon="memory">memory</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface">The Recipe Fixer</h3>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                                    Analyzing Flavor Profiles...
+                                </p>
+</div>
+</div>
+<button class="text-primary text-sm font-label font-bold uppercase tracking-widest hover:underline transition-all">Reset Thread</button>
+</div>
+<!-- Chat Bubbles -->
+<div class="flex-grow flex flex-col gap-6 overflow-y-auto pr-2">
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="max-w-[80%] bg-surface-container text-on-surface-variant p-4 rounded-2xl rounded-tr-none">
+<p class="text-sm">I'm making a Boeuf Bourguignon but the sauce feels way too heavy and a bit flat. Any scientific way to brighten it up without losing the depth?</p>
+</div>
+</div>
+<!-- AI Logic Message -->
+<div class="flex justify-start gap-3">
+<div class="flex flex-col gap-4 max-w-[90%]">
+<div class="bg-primary text-white p-5 rounded-2xl rounded-tl-none shadow-lg">
+<p class="font-medium text-sm leading-relaxed">Analyzing molecular structure... The flatness suggests a lack of acidity to cut through the collagen and fat from the short ribs. We need a "Fixer" intervention.</p>
+</div>
+<!-- Code-like Recipe Correction -->
+<div class="bg-stone-900 text-stone-300 p-6 rounded-xl font-mono text-[13px] shadow-inner overflow-x-auto">
+<div class="flex items-center gap-2 mb-3 text-stone-500 border-b border-stone-800 pb-2">
+<span class="material-symbols-outlined text-sm" data-icon="code">code</span>
+<span>RECIPE_PATCH_V2.0</span>
+</div>
+<div class="space-y-1">
+<p class="text-emerald-500">// Adjusting pH balance for flavor clarity</p>
+<p><span class="text-primary-container">IF</span> (sauce_profile == "heavy_flat") {</p>
+<p class="pl-4"><span class="text-secondary-container">ADD</span> 15ml <span class="text-tertiary-fixed-dim">aged_balsamic</span>;</p>
+<p class="pl-4"><span class="text-secondary-container">REDUCE</span> heat by 15%;</p>
+<p class="pl-4"><span class="text-secondary-container">INJECT</span> 1g <span class="text-tertiary-fixed-dim">lemon_zest_microplane</span>;</p>
+<p>}</p>
+<p class="text-stone-500 mt-4">/* Result: Maillard complexity preserved with heightened top-note clarity */</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Bar -->
+<div class="mt-8 flex gap-3 items-center bg-surface-container-low p-2 rounded-full border border-outline-variant/20 focus-within:bg-white focus-within:shadow-md transition-all">
+<input class="flex-grow bg-transparent border-none focus:ring-0 px-4 text-sm font-body" placeholder="Describe the taste (e.g., 'too bitter', 'grainy')..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Side: Active Fixes & Bento Cards -->
+<section class="lg:w-2/5 flex flex-col gap-6">
+<h4 class="font-headline font-extrabold text-xl tracking-tight text-primary">Active Fixes</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+<!-- Bento Card: Real-time adjustment -->
+<div class="bg-surface-container-high p-5 rounded-xl border-l-4 border-primary hover:scale-[1.02] transition-transform duration-300 group">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-primary">Tension: Too Salty</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:rotate-12 transition-transform" data-icon="science">science</span>
+</div>
+<h5 class="font-headline font-bold text-lg mb-1">Vinegar Injection</h5>
+<p class="text-sm text-on-surface-variant mb-4">Adding 1 tsp of apple cider vinegar to neutralize sodium perception via pH shift.</p>
+<div class="h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+<!-- Bento Card: Flavor Spectrum -->
+<div class="bg-white p-5 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="monitoring">monitoring</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest">Flavor Spectrum</span>
+</div>
+<div class="space-y-4">
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between text-[10px] font-label uppercase">
+<span>Earthy / Spicy</span>
+<span>Cool / Acidic</span>
+</div>
+<div class="overflow-hidden h-3 mb-4 text-xs flex rounded-full bg-surface-container">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-primary to-secondary" style="width:75%"></div>
+</div>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant italic leading-relaxed text-center">Current bias: 75% Warm/Earthy. Recommend shift toward Acidic quadrant.</p>
+</div>
+<!-- Bento Card: Image Focus -->
+<div class="relative h-48 rounded-xl overflow-hidden group">
+<img alt="Professional Kitchen" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Modern high-end kitchen with stainless steel appliances and dramatic warm lighting on a boiling copper pot of stew" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhi9CPNvx3UtPbHFGZFiU9hyMRVtsR0XzNEVgmzbfHQIUagpPtTM-X0IdxUNpx8XtCmcdSEfLw2nDLOijEZ3clc_--FhrG2vOGGuMTd1GleR02HDLhW_-W3JR9YErnYM4qUCawGkU-lkrDA6a4tjvb0x38rrPzxZ7AdyKPzfBAdGvj6y1ZXZB7hZj4MeEZSNelRxwgETyVs2HtwvfR6Q6fiiW9_y8z-4s5s7B6EGHBuvOM_L9KhWtQsYymz5bzePSI3fcdaP1AHX6z"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface to-transparent opacity-70"></div>
+<div class="absolute bottom-4 left-4 right-4 text-white">
+<p class="text-[10px] font-label uppercase tracking-widest opacity-80 mb-1">Source Analysis</p>
+<h6 class="font-headline font-bold text-sm">Visual Viscosity Check: Normal</h6>
+</div>
+</div>
+<!-- Bento Card: Discovery Chip -->
+<div class="bg-secondary-fixed p-5 rounded-xl border border-secondary/10 flex items-center gap-4 hover:bg-secondary-fixed-dim transition-colors cursor-pointer">
+<div class="p-3 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-on-secondary-fixed-variant">AI Insights</span>
+<h5 class="font-headline font-bold text-on-secondary-fixed leading-tight">Umami Booster Found</h5>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-end px-6 pb-6 pt-2 bg-[#fcf9f6]/60 dark:bg-stone-950/60 backdrop-blur-3xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)] rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#a03f28] to-[#c0573e] text-white rounded-full p-3 w-12 h-12 mb-2 scale-105 active:scale-95 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="hidden">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label text-[10px] uppercase tracking-wider font-medium">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="person_pin">person_pin</span>
+<span class="font-label text-[10px] uppercase tracking-wider font-medium">Profile</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label text-[10px] uppercase tracking-wider font-medium">Create</span>
+</a>
+</nav>
+</body></html>

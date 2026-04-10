@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e0e0ff",
+              "outline": "#8a726c",
+              "on-error": "#ffffff",
+              "background": "#fcf9f6",
+              "on-surface": "#1c1c1a",
+              "on-secondary-fixed": "#000767",
+              "secondary-container": "#959efd",
+              "surface-tint": "#a03f29",
+              "surface-container-low": "#f6f3f0",
+              "surface-container": "#f0edea",
+              "on-tertiary-fixed-variant": "#633f00",
+              "primary-fixed": "#ffdad2",
+              "surface-bright": "#fcf9f6",
+              "secondary-fixed-dim": "#bdc2ff",
+              "on-primary-fixed": "#3d0700",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e5e2df",
+              "tertiary": "#825400",
+              "on-primary-fixed-variant": "#812914",
+              "primary-container": "#c0573e",
+              "outline-variant": "#ddc0ba",
+              "tertiary-fixed-dim": "#feb956",
+              "surface-dim": "#dcdad7",
+              "on-secondary-fixed-variant": "#343d96",
+              "surface-container-high": "#eae8e5",
+              "on-secondary-container": "#27308a",
+              "on-surface-variant": "#56423d",
+              "inverse-primary": "#ffb4a3",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#ffddb4",
+              "surface-variant": "#e5e2df",
+              "tertiary-container": "#a36b04",
+              "primary": "#a03f28",
+              "secondary": "#4c56af",
+              "on-tertiary-container": "#ffffff",
+              "on-primary-container": "#120100",
+              "inverse-surface": "#31302f",
+              "inverse-on-surface": "#f3f0ed",
+              "primary-fixed-dim": "#ffb4a3",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "on-secondary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c1a",
+              "surface": "#fcf9f6",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .flavor-spectrum {
+        background: linear-gradient(90deg, #a03f28 0%, #4c56af 100%);
+      }
+      .bento-shadow {
+        box-shadow: 0 0 40px rgba(28, 28, 26, 0.04);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen">
+<!-- Desktop Side Navigation -->
+<nav class="hidden md:flex flex-col py-8 gap-6 h-screen w-64 fixed left-0 top-0 border-r-0 bg-[#fcf9f6] dark:bg-stone-950 z-40">
+<div class="px-6 mb-8">
+<h1 class="font-black text-[#a03f28] text-xl tracking-tighter">Digital Gastronome</h1>
+<p class="font-manrope uppercase tracking-[0.05em] text-[10px] text-on-surface-variant">Precision AI Kitchen</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Assistant</span>
+</a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="explore_neighbor">explore_nearby</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Discovery</span>
+</a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Heritage</span>
+</a>
+<a class="flex items-center gap-3 text-[#a03f28] dark:text-[#c0573e] font-bold border-l-4 border-[#a03f28] pl-4 py-3 bg-surface-container-low transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="blender">blender</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Studio</span>
+</a>
+</div>
+</nav>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#fcf9f6] dark:bg-stone-950 shadow-[0_0_40px_rgba(28,28,26,0.06)] md:pl-64">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tighter text-[#a03f28] dark:text-[#c0573e] md:hidden">Culinary Compass</span>
+<h2 class="font-headline tracking-tight text-stone-900 dark:text-stone-100 font-bold text-lg hidden md:block">Recipe Studio</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container rounded-full px-4 py-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-body ml-2 w-32" placeholder="Search archive..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-[#e5e2df] transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined text-[#a03f28]" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+<div class="bg-[#f0edea] dark:bg-stone-900 h-px w-full"></div>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-32 px-4 md:px-10 max-w-7xl mx-auto">
+<!-- Studio Header Section -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<div class="flex gap-2">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">Drafting Mode</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">Family Secret</span>
+</div>
+<h3 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tighter text-on-surface">Untaught Traditions</h3>
+<p class="text-on-surface-variant max-w-xl text-lg">Documenting the sensory blueprint of generational heritage through precision gastronome tools.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 rounded-full font-label text-sm font-bold border border-outline-variant hover:bg-surface-container transition-all">Discard</button>
+<button class="px-8 py-3 rounded-full font-label text-sm font-bold text-on-primary bg-gradient-to-br from-primary to-primary-container shadow-lg hover:opacity-90 transition-all flex items-center gap-2">
+                    Publish to Archive <span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+</button>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+<!-- Left Column: Narrative & Media -->
+<div class="md:col-span-7 space-y-6">
+<!-- The Cultural Narrative Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 bento-shadow border-outline-variant/10 border">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+<h4 class="font-headline text-xl font-bold tracking-tight">The Cultural Narrative</h4>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Recipe Identity</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-primary/20 text-lg font-headline font-semibold" placeholder="Grandmother's Sunday Mole..." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">The Origin Story</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-primary/20 resize-none font-body leading-relaxed" placeholder="Describe the kitchen's atmosphere, the specific wood used in the fire, or the memory attached to this flavor profile..." rows="4"></textarea>
+</div>
+</div>
+</div>
+<!-- Step-by-Step Ritual -->
+<div class="bg-surface-container rounded-xl p-8 bento-shadow">
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="precision_manufacturing">precision_manufacturing</span>
+<h4 class="font-headline text-xl font-bold tracking-tight">The Ritual</h4>
+</div>
+<button class="text-primary font-label text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span> Add Step
+                        </button>
+</div>
+<div class="space-y-8">
+<!-- Ritual Step 1 -->
+<div class="flex gap-6 group">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shrink-0">01</div>
+<div class="w-px h-full bg-outline-variant/30 my-2"></div>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex flex-col sm:flex-row gap-4">
+<div class="w-full sm:w-1/3 aspect-video rounded-lg overflow-hidden relative bg-surface-container-highest flex items-center justify-center border-2 border-dashed border-outline-variant/50">
+<div class="text-center p-4">
+<span class="material-symbols-outlined text-on-surface-variant mb-2" data-icon="upload_file">upload_file</span>
+<p class="text-[10px] font-label font-medium uppercase text-on-surface-variant">Upload Ritual Media</p>
+</div>
+</div>
+<div class="flex-1">
+<input class="w-full bg-surface-container-lowest border-none rounded-lg p-3 font-semibold mb-2" placeholder="Phase: Tempering the Spices" type="text"/>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-lg p-3 text-sm h-24 resize-none" placeholder="The seeds must dance in the oil for exactly 45 seconds before the heat is reduced..."></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Ritual Step 2 (Active/Selected) -->
+<div class="flex gap-6 group">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-sm shrink-0">02</div>
+</div>
+<div class="flex-1">
+<div class="p-6 rounded-xl bg-surface-bright border border-primary/20 shadow-sm">
+<p class="text-on-surface-variant italic text-sm">Drafting next phase...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Flavor DNA & Specs -->
+<div class="md:col-span-5 space-y-6">
+<!-- Flavor DNA Section -->
+<div class="bg-surface-container-lowest rounded-xl p-8 bento-shadow border-outline-variant/10 border">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-secondary" data-icon="dna">genetics</span>
+<h4 class="font-headline text-xl font-bold tracking-tight">Flavor DNA</h4>
+</div>
+<div class="space-y-10">
+<!-- Spectrum 1 -->
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Profile Balance</label>
+<span class="text-xs font-bold font-manrope text-primary">Spicy-Earthy</span>
+</div>
+<div class="relative h-2 w-full flavor-spectrum rounded-full">
+<div class="absolute top-1/2 left-3/4 -translate-y-1/2 w-4 h-4 rounded-full bg-white shadow-md border-2 border-primary cursor-pointer"></div>
+</div>
+<div class="flex justify-between text-[9px] font-label font-medium text-on-surface-variant uppercase tracking-tighter">
+<span>Bright / Acidic</span>
+<span>Deep / Umami</span>
+</div>
+</div>
+<!-- Spectrum 2 -->
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Visual Texture</label>
+<span class="text-xs font-bold font-manrope text-secondary">Silky Gloss</span>
+</div>
+<div class="relative h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary/20 to-secondary rounded-full"></div>
+<div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-4 h-4 rounded-full bg-white shadow-md border-2 border-secondary cursor-pointer"></div>
+</div>
+<div class="flex justify-between text-[9px] font-label font-medium text-on-surface-variant uppercase tracking-tighter">
+<span>Rustic / Grainy</span>
+<span>Refined / Pureed</span>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-surface-container">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant block mb-4">Aromatic Intensity</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container-low text-xs font-bold border border-outline-variant/20 hover:bg-secondary-fixed transition-colors">Floral</button>
+<button class="px-4 py-2 rounded-lg bg-secondary text-white text-xs font-bold border-none shadow-sm">Pungent</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low text-xs font-bold border border-outline-variant/20 hover:bg-secondary-fixed transition-colors">Smoky</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low text-xs font-bold border border-outline-variant/20 hover:bg-secondary-fixed transition-colors">Citrus</button>
+</div>
+</div>
+</div>
+<!-- Digital Gastronome Precision Meta -->
+<div class="bg-inverse-surface text-inverse-on-surface rounded-xl p-8 bento-shadow relative overflow-hidden">
+<div class="relative z-10 space-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="fluorescent">fluorescent</span>
+<h4 class="font-headline text-lg font-bold tracking-tight">Technical Blueprint</h4>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-white/5 rounded-lg">
+<p class="text-[9px] uppercase tracking-widest text-white/50 mb-1">Cook Complexity</p>
+<p class="text-lg font-headline font-bold">Artisanal</p>
+</div>
+<div class="p-4 bg-white/5 rounded-lg">
+<p class="text-[9px] uppercase tracking-widest text-white/50 mb-1">Precision Rank</p>
+<p class="text-lg font-headline font-bold">Heritage-9</p>
+</div>
+</div>
+<div class="pt-4 border-t border-white/10">
+<p class="text-xs leading-relaxed text-white/70 italic">AI Engine is currently analyzing your steps to generate a nutritional and chemical interaction map.</p>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 blur-[60px] rounded-full"></div>
+</div>
+<!-- Hero Image Capture -->
+<div class="group relative aspect-square rounded-xl overflow-hidden bento-shadow cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="dramatic close-up of dark ceramic bowl with colorful mole sauce being garnished with sesame seeds under warm spotlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUkRXd2Cr29mQdgoekh4on66_a278NRN11ZHgrFwUCWU_dGtfpv_fAb9eR9nV33Ug5HIXXN29WlIP8WnMfeQXJdNBkGZoAA5JDD-XpDIHDjvD_Exny7yVqjvlGRqYuA-6HS-g05WYNd-1dD3bf1of89UY0mNJ4XhgIphL_buWOCijB7POexbRvgqKkfxGSviQh_0f6jqMkLa3xdK0g7yW3J4iUVvdiSE9OZdzWaXX3aGPKUkAtZOaGZVS_T2UdmS7X_T54FC0I2yjS"/>
+<div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-4xl mb-2" data-icon="add_a_photo">add_a_photo</span>
+<p class="text-white font-label text-xs font-bold uppercase tracking-widest">Update Cover Visual</p>
+</div>
+<div class="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase">Main Visual Anchor</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-[#fcf9f6]/60 backdrop-blur-3xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)] flex justify-around items-end px-6 pb-6 pt-2 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#56423d] p-2 hover:opacity-80 transition-opacity scale-105 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] p-2 hover:opacity-80 transition-opacity scale-105 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#a03f28] to-[#c0573e] text-white rounded-full p-3 w-12 h-12 mb-2 scale-105 active:scale-95 shadow-lg" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<!-- No label for active FAB-style button in bottom nav -->
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] p-2 hover:opacity-80 transition-opacity scale-105 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="person_pin">person_pin</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

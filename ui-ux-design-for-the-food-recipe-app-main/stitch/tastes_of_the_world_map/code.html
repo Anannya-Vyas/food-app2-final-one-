@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e0e0ff",
+              "outline": "#8a726c",
+              "on-error": "#ffffff",
+              "background": "#fcf9f6",
+              "on-surface": "#1c1c1a",
+              "on-secondary-fixed": "#000767",
+              "secondary-container": "#959efd",
+              "surface-tint": "#a03f29",
+              "surface-container-low": "#f6f3f0",
+              "surface-container": "#f0edea",
+              "on-tertiary-fixed-variant": "#633f00",
+              "primary-fixed": "#ffdad2",
+              "surface-bright": "#fcf9f6",
+              "secondary-fixed-dim": "#bdc2ff",
+              "on-primary-fixed": "#3d0700",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e5e2df",
+              "tertiary": "#825400",
+              "on-primary-fixed-variant": "#812914",
+              "primary-container": "#c0573e",
+              "outline-variant": "#ddc0ba",
+              "tertiary-fixed-dim": "#feb956",
+              "surface-dim": "#dcdad7",
+              "on-secondary-fixed-variant": "#343d96",
+              "surface-container-high": "#eae8e5",
+              "on-secondary-container": "#27308a",
+              "on-surface-variant": "#56423d",
+              "inverse-primary": "#ffb4a3",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#ffddb4",
+              "surface-variant": "#e5e2df",
+              "tertiary-container": "#a36b04",
+              "primary": "#a03f28",
+              "secondary": "#4c56af",
+              "on-tertiary-container": "#ffffff",
+              "on-primary-container": "#120100",
+              "inverse-surface": "#31302f",
+              "inverse-on-surface": "#f3f0ed",
+              "primary-fixed-dim": "#ffb4a3",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "on-secondary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c1a",
+              "surface": "#fcf9f6",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .map-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(160, 63, 40, 0.05) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            background: rgba(28, 28, 26, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-stone-950 font-body text-stone-100 overflow-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 w-full bg-[#fcf9f6] dark:bg-stone-950 shadow-[0_0_40px_rgba(28,28,26,0.06)]">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tighter text-[#a03f28] dark:text-[#c0573e] font-headline">Culinary Compass</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8 font-headline text-sm font-bold tracking-tight">
+<a class="text-[#56423d] dark:text-stone-400 hover:bg-[#e5e2df] dark:hover:bg-stone-800 transition-all duration-200 px-3 py-1 rounded-lg" href="#">Assistant</a>
+<a class="text-[#a03f28] font-bold px-3 py-1 rounded-lg" href="#">Discovery</a>
+<a class="text-[#56423d] dark:text-stone-400 hover:bg-[#e5e2df] dark:hover:bg-stone-800 transition-all duration-200 px-3 py-1 rounded-lg" href="#">Heritage</a>
+<a class="text-[#56423d] dark:text-stone-400 hover:bg-[#e5e2df] dark:hover:bg-stone-800 transition-all duration-200 px-3 py-1 rounded-lg" href="#">Studio</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-stone-800 transition-colors">
+<span class="material-symbols-outlined text-stone-100">search</span>
+</button>
+<span class="material-symbols-outlined text-[#a03f28] scale-95 active:scale-90 transition-transform cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Map Canvas -->
+<main class="relative h-screen w-full bg-stone-950 map-bg flex items-center justify-center overflow-hidden">
+<!-- Stylistic Vector Map Mockup -->
+<div class="absolute inset-0 opacity-40 mix-blend-overlay">
+<img class="w-full h-full object-cover" data-alt="Dark stylized world map with glowing indigo connections and soft terracotta hotspots across continents on a dark stone background" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSo6wez1AXPpWym_I8QN7atdgGiHIWSlgBLzY3iuS3qFqXoDbJeoSEeriYAq4nnj9szSKnF83Q__U3E4U-7MUhLSOsXd-L2YGI-7lFPG33-IEOC2L4qI9VLJVBBN2oERfQvPWgQFFDDAV7LStEdCuGzDSTsSdRBMyhrMnnDjOTBzFIJcjMxVU1blSjYpI2lHY2h2M3E7si2HSsZbT9TtoQbEj-IVyd-lPMLYa5xqJxC4wd_HoxT0Ps6Ijw4uJn2LIHc1ONvKxFPo0p"/>
+</div>
+<!-- GPS Hotspots -->
+<!-- Oaxaca Hotspot -->
+<div class="absolute top-[45%] left-[22%] group cursor-pointer">
+<div class="relative">
+<div class="absolute inset-0 animate-ping rounded-full bg-primary/40 h-8 w-8 -m-2"></div>
+<div class="h-4 w-4 rounded-full bg-primary border-2 border-white shadow-[0_0_15px_rgba(160,63,40,0.8)]"></div>
+</div>
+<div class="absolute top-6 left-1/2 -translate-x-1/2 bg-stone-900/90 backdrop-blur-md px-3 py-1 rounded-full whitespace-nowrap border border-stone-800">
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest text-primary">Oaxaca, MX</span>
+</div>
+</div>
+<!-- Bihar Hotspot -->
+<div class="absolute top-[42%] left-[70%] group cursor-pointer">
+<div class="relative">
+<div class="absolute inset-0 animate-ping rounded-full bg-secondary/40 h-8 w-8 -m-2"></div>
+<div class="h-4 w-4 rounded-full bg-secondary border-2 border-white shadow-[0_0_15px_rgba(76,86,175,0.8)]"></div>
+</div>
+<div class="absolute top-6 left-1/2 -translate-x-1/2 bg-stone-900/90 backdrop-blur-md px-3 py-1 rounded-full whitespace-nowrap border border-stone-800">
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest text-secondary">Bihar, IN</span>
+</div>
+</div>
+<!-- Floating Bento Box Card (Region Detail) -->
+<section class="absolute right-8 top-24 bottom-28 w-96 flex flex-col gap-4 z-40">
+<!-- Header Card -->
+<div class="glass-panel p-6 rounded-xl border-l-4 border-primary">
+<div class="flex justify-between items-start mb-2">
+<h2 class="font-headline text-3xl font-extrabold tracking-tighter text-stone-100">Oaxaca, MX</h2>
+<span class="material-symbols-outlined text-primary" data-icon="explore_neighbor">explore_nearby</span>
+</div>
+<p class="text-stone-400 text-sm leading-relaxed">The land of seven moles and ancient agave spirits. A high-altitude cradle of indigenous Zapotec culinary tech.</p>
+</div>
+<!-- Asymmetric Bento Grid Items -->
+<div class="grid grid-cols-2 gap-4 flex-grow">
+<!-- Famous Dish Card -->
+<div class="col-span-2 relative group overflow-hidden rounded-xl bg-stone-900 hover:scale-[1.02] transition-transform duration-300">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="Rich dark chocolate brown mole sauce drizzled over organic poultry with sesame seeds and fresh herbs, warm candlelight atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdzqzk_HE_DziNwZHDdB-3m7w92RJIaS9McwZ3eIdGg3qVJXWEuLtTByiRpbj3IfIeASKdvO28MWi-9o3cxLHcftDJveHOFvnxXTHGrLkQnnZ_vkYhJOxTOymbg4uxOSPs-iInRbcBJpJjNLMKpmNr44DhLjj7c1J3J4V_9jroeBbH-hAkS_viAAPAhlwr-n1qKohF93Q4OwSSz2GuQHPDVPGKbXZKuuoCoRDDrp5Dro2vtTTEfHSA3S4Ajmah_twGuyHWfZanGdBQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="relative p-4 h-full flex flex-col justify-end">
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold w-fit mb-2 border border-primary/30 uppercase tracking-widest">Heritage Dish</span>
+<h3 class="font-headline text-xl font-bold leading-tight">Mole Negro Oaxaqueño</h3>
+<div class="flex items-center gap-1 mt-1 text-tertiary-fixed text-xs font-bold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9 Must-Try Rating</span>
+</div>
+</div>
+</div>
+<!-- Maestro Card -->
+<div class="bg-stone-900 p-4 rounded-xl flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-stone-700">
+<img class="w-full h-full object-cover" data-alt="Portrait of an elderly Oaxacan woman with braided hair and traditional embroidered clothing, soft window lighting, warm skin tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADNxIyVwYqjOlKM031a9wAgn0S1iKFp9oUvJPI5tFWRXDBMnyxuprwcs7DuFOe_e9ZceAxv_g5p_GHkp10kGhrDotYdGXKSzcaIq8hkknCCcGk9t9ShFGsuIrn_nd0P6Ij8L6xr0LILXbhSr4ize0x8fUWEoaGc9N0JRX9RpOF575MLZLU2CuHYMq1Fj-B8q-KabYOgi13Mak0Nr_kYhY72oe-Ad5fzN_gGFGF2fMeRzoLF_S4h9DdUoR3oU9Nx40G7O7AbVrJKGvj"/>
+</div>
+<span class="text-[10px] font-headline font-bold uppercase tracking-wider text-stone-400">Local Maestro</span>
+</div>
+<div>
+<h4 class="font-headline text-sm font-bold text-stone-100">Abuela Elena</h4>
+<p class="text-[10px] text-stone-500">Master of the Comal &amp; Ancient Fermentation</p>
+</div>
+</div>
+<!-- AI Insight Card -->
+<div class="bg-secondary/10 border border-secondary/20 p-4 rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary" data-icon="smart_toy">smart_toy</span>
+<div>
+<span class="text-[10px] font-headline font-bold uppercase tracking-wider text-secondary">AI Insight</span>
+<p class="text-[11px] text-stone-300 leading-snug mt-1">Flavor profile shifts toward smoky-sweet with 84% agave notes.</p>
+</div>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container rounded-full text-white font-headline font-extrabold tracking-tight hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                Unlock Full Recipe Archive
+                <span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</button>
+</section>
+<!-- Map Controls Overlay -->
+<div class="absolute left-8 bottom-28 flex flex-col gap-2 z-40">
+<button class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center text-stone-100 border border-stone-700 hover:bg-stone-800 transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<button class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center text-stone-100 border border-stone-700 hover:bg-stone-800 transition-colors">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<button class="w-12 h-12 glass-panel rounded-xl flex items-center justify-center text-primary border border-primary/30 hover:bg-stone-800 transition-colors mt-2">
+<span class="material-symbols-outlined" data-icon="my_location" style="font-variation-settings: 'FILL' 1;">my_location</span>
+</button>
+</div>
+</main>
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col py-8 gap-6 h-screen w-64 fixed left-0 top-0 border-r-0 bg-[#fcf9f6] dark:bg-stone-950 z-40 pt-24">
+<div class="px-5 mb-4">
+<h3 class="font-headline font-black text-[#a03f28] text-lg">Digital Gastronome</h3>
+<p class="text-[10px] text-stone-500 uppercase tracking-widest">Precision AI Kitchen</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] dark:hover:bg-stone-900 transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Assistant</span>
+</a>
+<a class="flex items-center gap-3 text-[#a03f28] dark:text-[#c0573e] font-bold border-l-4 border-[#a03f28] pl-4 py-3 bg-[#f0edea] dark:bg-stone-900" href="#">
+<span class="material-symbols-outlined" data-icon="explore_neighbor">explore_nearby</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Discovery</span>
+</a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] dark:hover:bg-stone-900" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Heritage</span>
+</a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] dark:hover:bg-stone-900" href="#">
+<span class="material-symbols-outlined" data-icon="blender">blender</span>
+<span class="font-manrope uppercase tracking-[0.05em] text-xs">Studio</span>
+</a>
+</div>
+</nav>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-end px-6 pb-6 pt-2 md:hidden bg-[#fcf9f6]/60 dark:bg-stone-950/60 backdrop-blur-3xl rounded-t-[1.5rem] shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">AI Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#a03f28] to-[#c0573e] text-white rounded-full p-3 w-12 h-12 mb-2 scale-105 active:scale-95 duration-300">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">Create</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="person_pin">person_pin</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">Profile</span>
+</div>
+</nav>
+</body></html>

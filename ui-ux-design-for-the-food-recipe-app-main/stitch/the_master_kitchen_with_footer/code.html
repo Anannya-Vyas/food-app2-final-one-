@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Culinary Compass - The Master Kitchen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f6f3f0",
+              "secondary-fixed-dim": "#bdc2ff",
+              "secondary-fixed": "#e0e0ff",
+              "on-surface-variant": "#56423d",
+              "on-secondary": "#ffffff",
+              "on-surface": "#1c1c1a",
+              "secondary": "#4c56af",
+              "background": "#fcf9f6",
+              "on-primary-container": "#120100",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#a03f29",
+              "tertiary-fixed-dim": "#feb956",
+              "on-tertiary-container": "#ffffff",
+              "inverse-surface": "#31302f",
+              "primary-fixed": "#ffdad2",
+              "surface-variant": "#e5e2df",
+              "tertiary": "#825400",
+              "primary-fixed-dim": "#ffb4a3",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#27308a",
+              "on-error-container": "#93000a",
+              "surface-container": "#f0edea",
+              "outline": "#8a726c",
+              "inverse-primary": "#ffb4a3",
+              "on-tertiary-fixed": "#291800",
+              "secondary-container": "#959efd",
+              "surface-bright": "#fcf9f6",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#a36b04",
+              "on-background": "#1c1c1a",
+              "on-secondary-fixed": "#000767",
+              "surface-dim": "#dcdad7",
+              "on-primary": "#ffffff",
+              "primary-container": "#c0573e",
+              "outline-variant": "#ddc0ba",
+              "on-primary-fixed": "#3d0700",
+              "inverse-on-surface": "#f3f0ed",
+              "tertiary-fixed": "#ffddb4",
+              "primary": "#a03f28",
+              "on-secondary-fixed-variant": "#343d96",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "surface": "#fcf9f6",
+              "surface-container-highest": "#e5e2df",
+              "on-primary-fixed-variant": "#812914",
+              "surface-container-high": "#eae8e5",
+              "on-tertiary-fixed-variant": "#633f00"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .recipe-gradient {
+        background: linear-gradient(135deg, #a03f28 0%, #c0573e 100%);
+      }
+      .glass-panel {
+        background: rgba(252, 249, 246, 0.6);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed-variant overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fcf9f6]/80 dark:bg-stone-950/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 py-4 max-w-screen-2xl mx-auto w-full">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform text-on-surface">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<span class="text-2xl font-black tracking-tighter text-[#a03f28] dark:text-[#c0573e] uppercase">Global Culinary Compass</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<a class="text-[#a03f28] dark:text-[#c0573e] font-extrabold font-headline tracking-tight text-lg uppercase" href="#">Kitchen</a>
+<a class="text-[#56423d] dark:text-stone-400 font-medium font-headline tracking-tight text-lg uppercase hover:text-[#a03f28] transition-colors duration-300" href="#">Discovery</a>
+<a class="text-[#56423d] dark:text-stone-400 font-medium font-headline tracking-tight text-lg uppercase hover:text-[#a03f28] transition-colors duration-300" href="#">Scanner</a>
+</div>
+<span class="material-symbols-outlined text-on-surface text-3xl">account_circle</span>
+</div>
+</div>
+<div class="bg-gradient-to-b from-[#f0edea] to-transparent h-px"></div>
+</nav>
+<main class="pt-20 pb-32">
+<div class="max-w-screen-2xl mx-auto px-6">
+<!-- Hero Bento Section -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+<!-- Primary Visual Card -->
+<div class="md:col-span-8 relative group overflow-hidden rounded-xl h-[500px] shadow-[0_40px_40px_rgba(28,28,26,0.06)]">
+<img alt="Oaxacan Mole" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of a rich, dark Oaxacan mole sauce served over a plate with steam rising, artistic overhead shot, warm earth tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe36HKZ8ODeEPuYHgrzvCnBIj_epYHAZnVtbdPPgxfKR2OEfaYBZzFJpKzzd8BL5mptI1cSzL1LyTwvVb6MP-zhNsGdra4S8kIEGWkYjjGAtA8LvWyQskYP1gKa-im1WWathN1AEodXe_dCtBaL3Aemd2ULQYk7ZvO-fDsOMeLLlV4zum0wC4e1W5mg5Ty0LszUWaDKSymYexix1wCJeLRQWYU5ikmdo4q39JlyxEvGZy9wD6iWGO6klT54DW7SawhlcIlFRftuVx0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-8">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed font-label text-xs font-bold tracking-widest rounded-md uppercase">Origin: Oaxaca</span>
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed font-label text-xs font-bold tracking-widest rounded-md uppercase">AI Analyzed</span>
+</div>
+<h1 class="text-white font-headline text-5xl font-extrabold tracking-tight">Oaxacan Black Mole</h1>
+<p class="text-white/80 font-body text-lg max-w-xl mt-2">A complex, multi-layered masterpiece featuring 27 ingredients and artisanal chocolate notes.</p>
+</div>
+</div>
+<!-- Audible Recipe & Quick Stats -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Audio Controls Card -->
+<div class="bg-surface-container rounded-xl p-8 flex flex-col justify-between flex-1 relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">graphic_eq</span>
+<span class="font-headline font-bold text-lg text-on-surface tracking-tight uppercase">Audible Recipe</span>
+</div>
+<div class="space-y-4">
+<p class="text-on-surface-variant font-medium leading-relaxed italic">"Next, we will slowly toast the chilhuacle chilies until they release a smoky aroma..."</p>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary w-1/3 h-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-8 relative z-10">
+<button class="w-12 h-12 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">replay_10</span>
+</button>
+<button class="w-16 h-16 recipe-gradient rounded-full flex items-center justify-center text-white shadow-xl active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">forward_30</span>
+</button>
+</div>
+<div class="mt-6 flex justify-center">
+<span class="text-xs font-label font-bold text-on-surface-variant tracking-[0.2em] uppercase">Narrator: Artisan AI</span>
+</div>
+</div>
+<!-- Stats Bento Row -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high p-5 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="font-label text-[10px] font-extrabold text-on-surface-variant tracking-widest uppercase mb-1">Cook Time</span>
+<span class="font-headline font-bold text-2xl text-primary">4h 20m</span>
+</div>
+<div class="bg-surface-container-high p-5 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="font-label text-[10px] font-extrabold text-on-surface-variant tracking-widest uppercase mb-1">Complexity</span>
+<span class="font-headline font-bold text-2xl text-primary">Master</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Layout -->
+<div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left: Ingredients & Tools -->
+<div class="lg:col-span-4 space-y-10">
+<section>
+<h2 class="font-headline text-2xl font-extrabold text-on-surface tracking-tight uppercase mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">shopping_basket</span>
+                        Ingredients
+                    </h2>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<span class="font-body font-medium">Dried Chilhuacle Chilies</span>
+<span class="font-label font-bold text-on-surface-variant">150g</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-lg">
+<span class="font-body font-medium">Artisanal Dark Chocolate (70%)</span>
+<span class="font-label font-bold text-on-surface-variant">200g</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<span class="font-body font-medium">Plantains (Very Ripe)</span>
+<span class="font-label font-bold text-on-surface-variant">2 units</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-lg">
+<span class="font-body font-medium">Lard or Avocado Oil</span>
+<span class="font-label font-bold text-on-surface-variant">120ml</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<span class="font-body font-medium">Sesame Seeds</span>
+<span class="font-label font-bold text-on-surface-variant">1/2 cup</span>
+</div>
+</div>
+</section>
+<!-- Flavor Spectrum Component -->
+<section class="p-6 bg-surface-container-high rounded-xl">
+<h3 class="font-headline text-sm font-extrabold text-on-surface-variant tracking-widest uppercase mb-4">Flavor Spectrum</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-[10px] font-label font-bold uppercase mb-2">
+<span>Earthy / Smoky</span>
+<span>Cool / Acidic</span>
+</div>
+<div class="h-2 w-full rounded-full bg-gradient-to-r from-primary to-secondary">
+<div class="h-4 w-4 bg-white border-2 border-primary rounded-full -mt-1 shadow-md ml-[20%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-label font-bold uppercase mb-2">
+<span>Sweet</span>
+<span>Spicy / Pungent</span>
+</div>
+<div class="h-2 w-full rounded-full bg-gradient-to-r from-tertiary-fixed-dim to-primary">
+<div class="h-4 w-4 bg-white border-2 border-primary rounded-full -mt-1 shadow-md ml-[65%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Center: Instructions -->
+<div class="lg:col-span-5 space-y-8">
+<h2 class="font-headline text-2xl font-extrabold text-on-surface tracking-tight uppercase mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">restaurant_menu</span>
+                    The Ritual
+                </h2>
+<div class="relative pl-10 border-l-2 border-surface-variant space-y-12">
+<!-- Step 1 -->
+<div class="relative">
+<div class="absolute -left-[51px] top-0 w-10 h-10 recipe-gradient rounded-full flex items-center justify-center text-white font-headline font-bold text-lg border-4 border-background">1</div>
+<h3 class="font-headline text-xl font-bold mb-3">Toast the Spirit of the Mole</h3>
+<p class="text-on-surface-variant leading-relaxed">Remove seeds and stems from the chilies. Toast them in a dry comal or heavy skillet until they are nearly blackened but not burnt. This deep roasting is the soul of the Oaxacan black mole.</p>
+<img alt="Toast chilies" class="mt-4 rounded-xl w-full h-48 object-cover shadow-sm" data-alt="Artisanal hand using wooden tongs to toast dark dried chilies in a cast iron pan, soft steam, warm kitchen atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwysEJeCM3ScW837ztod3KYRDN9VxUPs5L68A4N2yHB4ixv07laXo8-Z011DL6EeBATgbVCT3T5lr0ECXn1XnxuXq_7R9NPonfqik6Sx_aR_QZgVdZfM3_d76P2P2ii6JIV1y6iUMsdDEvELfBd1QBoN3XtDnRykW9uFSnvmQuxQBDYqjgn3EdS9_pCLHRPCv25WUx6KcOGeRvYKTdc6Nny5cJEl5jayz78QbYNb8Thq6iRN8EPntJEkhsCBzlq1W9qYQCTVjo0O58"/>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<div class="absolute -left-[51px] top-0 w-10 h-10 bg-surface-container rounded-full flex items-center justify-center text-on-surface-variant font-headline font-bold text-lg border-4 border-background">2</div>
+<h3 class="font-headline text-xl font-bold mb-3">The Grinding Process</h3>
+<p class="text-on-surface-variant leading-relaxed">Blend the toasted chilies with roasted tomatoes, garlic, and onions. Add the plantains and nuts. Ensure the texture is silky. If the blender struggles, add a splash of warm chicken or vegetable stock.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative">
+<div class="absolute -left-[51px] top-0 w-10 h-10 bg-surface-container rounded-full flex items-center justify-center text-on-surface-variant font-headline font-bold text-lg border-4 border-background">3</div>
+<h3 class="font-headline text-xl font-bold mb-3">Infuse the Cacao</h3>
+<p class="text-on-surface-variant leading-relaxed">Simmer the mixture in a clay pot. Once it thickens, whisk in the dark chocolate chunks until fully melted. The sauce should become glossy and dark like midnight velvet.</p>
+</div>
+</div>
+</div>
+<!-- Right: AI Recipe Fixer Assistant -->
+<div class="lg:col-span-3">
+<div class="sticky top-24 space-y-6">
+<div class="glass-panel p-6 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-white/40">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-2xl">auto_fix</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Recipe Fixer</h4>
+<span class="text-[10px] font-label font-bold text-secondary uppercase tracking-widest">Live Troubleshooting</span>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full text-left p-3 rounded-lg bg-surface-container hover:bg-surface-variant transition-colors group flex items-center justify-between">
+<span class="text-sm font-medium">"Help, it's too salty!"</span>
+<span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full text-left p-3 rounded-lg bg-surface-container hover:bg-surface-variant transition-colors group flex items-center justify-between">
+<span class="text-sm font-medium">"The sauce is breaking"</span>
+<span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full text-left p-3 rounded-lg bg-surface-container hover:bg-surface-variant transition-colors group flex items-center justify-between">
+<span class="text-sm font-medium">"Too spicy to handle"</span>
+<span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/30">
+<div class="relative">
+<input class="w-full bg-surface-container-lowest rounded-full py-3 pl-5 pr-12 text-sm border-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="Ask anything..." type="text"/>
+<button class="absolute right-2 top-1.5 w-9 h-9 recipe-gradient rounded-full flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-xl">mic</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Culinary Notes -->
+<div class="p-6 bg-tertiary-fixed rounded-2xl">
+<h4 class="font-headline font-bold text-on-tertiary-fixed mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-fixed">tips_and_updates</span>
+                            Chef's Wisdom
+                        </h4>
+<p class="text-sm text-on-tertiary-fixed-variant leading-relaxed">
+                            Use a "Molinillo" if you can find one to froth the chocolate into the mole. The aeration changes the flavor profile significantly.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-8 bg-[#f0edea] dark:bg-[#141412] text-sm leading-relaxed font-body">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline font-extrabold text-[#c0573e] uppercase tracking-widest text-xl">Global Culinary Compass</span>
+<p class="text-[#56423d] dark:text-[#e5e2df] opacity-70 text-center md:text-left">© 2024 Global Culinary Compass. Crafted for the Digital Gastronome.</p>
+</div>
+<div class="flex flex-col items-center md:items-end gap-6">
+<div class="flex flex-wrap justify-center md:justify-end gap-6">
+<a class="flex items-center gap-2 text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#a03f28] transition-all cursor-pointer hover:scale-105" href="#">
+<span class="material-symbols-outlined text-lg">link</span>
+                LinkedIn
+            </a>
+<a class="flex items-center gap-2 text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#a03f28] transition-all cursor-pointer hover:scale-105" href="#">
+<span class="material-symbols-outlined text-lg">code</span>
+                GitHub
+            </a>
+<a class="flex items-center gap-2 text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#a03f28] transition-all cursor-pointer hover:scale-105" href="mailto:chef@culinarycompass.com">
+<span class="material-symbols-outlined text-lg">mail</span>
+                Email Contact
+            </a>
+<a class="text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#c0573e] transition-all cursor-pointer hover:scale-105" href="#">Privacy Policy</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-[#c0573e] hover:bg-[#c0573e] hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-[#c0573e] hover:bg-[#c0573e] hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined">star</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Mobile BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#fcf9f6] dark:bg-stone-900 shadow-[0_-4px_24px_rgba(0,0,0,0.04)] rounded-t-[1.5rem] border-t border-[#e5e2df]/20 md:hidden">
+<div class="flex justify-around items-center px-4 pb-6 pt-2">
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-500 px-4 py-2 hover:bg-[#e5e2df] dark:hover:bg-stone-700 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Discovery</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-500 px-4 py-2 hover:bg-[#e5e2df] dark:hover:bg-stone-700 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">movie</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Feed</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-500 px-4 py-2 hover:bg-[#e5e2df] dark:hover:bg-stone-700 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Scanner</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#f0edea] dark:bg-stone-800 text-[#a03f28] dark:text-[#c0573e] rounded-xl px-4 py-2 active:scale-90 duration-200">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Kitchen</span>
+</div>
+</div>
+</nav>
+</body></html>

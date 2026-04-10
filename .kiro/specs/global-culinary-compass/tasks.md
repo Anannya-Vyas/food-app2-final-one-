@@ -1,0 +1,463 @@
+# Implementation Plan: Global Culinary Compass
+
+## Overview
+
+Full-stack implementation of the Global Culinary Compass platform. Tasks are ordered to build infrastructure first, then backend services, then frontend, then tests. Each task builds on the previous and ends with all components wired together.
+
+## Tasks
+
+- [x] 1. Project setup and infrastructure
+  - [x] 1.1 Initialize monorepo structure with `apps/web` (Next.js) and `apps/api` (Express) packages
+    - Set up `package.json` workspaces, shared `tsconfig.json`, and ESLint config
+    - Install core dependencies: Next.js 14 (App Router), Express, TypeScript, Prisma, Mongoose, `ioredis`, `meilisearch`, `fast-check`, `vitest`
+    - _Requirements: 18.1_
+  - [x] 1.2 Configure environment variables and Docker Compose
+    - Create `.env.example` with all required keys: `DATABASE_URL`, `MONGODB_URI`, `REDIS_URL`, `MEILI_URL`, `MEILI_MASTER_KEY`, `GEMINI_API_KEY`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `LIBRETRANSLATE_URL`, `JWT_SECRET`
+    - Write `docker-compose.yml` spinning up PostgreSQL (with pgvector), MongoDB, Redis, and Meilisearch
+    - _Requirements: 18.4_
+
+- [x] 2. Database schema and migrations
+  - [x] 2.1 Write PostgreSQL migrations for all core tables
+    - Create migrations for: `users`, `regions`, `recipes`, `ratings`, `recipe_translations`, `subscription_events`, `ai_usage`, `courses`, `lessons`, `user_lesson_progress`, `marketplace_listings`, `notifications`
+    - Enable `pgvector` extension and add `VECTOR(1536)` column on `recipes`
+    - Add all indexes: `recipes(region_id)`, `recipes(status)`, `ratings(user_id, recipe_id)` UNIQUE, `subscription_events(razorpay_event_id)` UNIQUE
+    - _Requirements: 2.1, 2.2, 6.1, 13.1_
+  - [x] 2.2 Write Mongoose schemas for MongoDB social collections
+    - Define schemas for `posts`, `comments`, and `follows` collections with field validation matching the design document
+    - _Requirements: 7.1, 7.2, 7.3_
+  - [x] 2.3 Configure Meilisearch index with correct settings
+    - Create `recipes` index with `searchableAttributes`, `filterableAttributes`, `sortableAttributes`, and `typoTolerance` settings from the design document
+    - Write a seed/sync script that pushes published recipes from PostgreSQL into Meilisearch
+    - _Requirements: 5.1, 5.2, 5.3, 5.6_
+
+- [x] 3. Auth backend
+  - [x] 3.1 Implement registration endpoint `POST /api/auth/register`
+    - Hash password with bcrypt cost factor 12, insert user row with `subscription_status = "trial"` and `trial_start_date = NOW()`
+    - Return 422 with descriptive error if email already exists (no duplicate row created)
+    - _Requirements: 1.1, 1.2, 1.5, 19.1_
+  - [ ]* 3.2 Write property test for duplicate email rejection (Property 3)
+    - **Property 3: Duplicate Email Rejection**
+    - **Validates: Requirements 1.5**
+  - [ ]* 3.3 Write property test for trial initiation on registration (Property 1)
+    - **Property 1: Trial Initiation on Registration**
+    - **Validates: Requirements 1.2, 13.1**
+  - [x] 3.4 Implement login endpoint `POST /api/auth/login` with JWT issuance
+    - Verify bcrypt hash, issue signed JWT (access + refresh tokens)
+    - Apply Redis-backed rate limiter: max 10 failed attempts per IP per 15-minute window, return HTTP 429 on breach
+    - _Requirements: 1.1, 19.3_
+  - [ ]* 3.5 Write property test for authentication rate limiting (Property 40)
+    - **Property 40: Authentication Rate Limiting**
+    - **Validates: Requirements 19.3**
+  - [x] 3.6 Implement Google and Apple OAuth endpoints
+    - `GET /api/auth/google`, `GET /api/auth/apple` — redirect to provider; callback upserts user row
+    - Preserve redirect URL in state param so frontend can restore it after OAuth callback
+    - _Requirements: 1.1, 1.6_
+  - [x] 3.7 Implement onboarding preferences endpoint `POST /api/auth/onboarding`
+    - Accept dietary preferences, cuisine interests, preferred language; store on user row
+    - _Requirements: 1.3, 1.4_
+  - [ ]* 3.8 Write property test for onboarding preferences round trip (Property 2)
+    - **Property 2: Onboarding Preferences Round Trip**
+    - **Validates: Requirements 1.4**
+  - [ ]* 3.9 Write property test for password hashing security (Property 39)
+    - **Property 39: Password Hashing Security**
+    - **Validates: Requirements 19.1**
+
+- [ ] 4. Checkpoint — Auth backend complete
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 5. Recipe backend (CRUD, moderation, translation)
+  - [x] 5.1 Implement `POST /api/recipes` — create recipe
+    - Validate required fields (title, region_id, ≥3 ingredients, ≥2 steps, cover_image_url); set `status = "pending"`
+    - Sanitize all text inputs before DB insert
+    - _Requirements: 4.1, 4.2, 4.3, 15.1, 19.4_
+  - [ ]* 5.2 Write property test for recipe required fields invariant (Property 4)
+    - **Property 4: Recipe Required Fields Invariant**
+    - **Validates: Requirements 2.1, 4.1**
+  - [ ]* 5.3 Write property test for recipe dietary tags validity (Property 5)
+    - **Property 5: Recipe Dietary Tags Validity**
+    - **Validates: Requirements 2.6**
+  - [x] 5.4 Implement `GET /api/recipes/:id` — fetch recipe with translation
+    - Check `recipe_translations` cache for user's preferred language; if miss, call LibreTranslate, cache result
+    - Return both original-language and translated content
+    - Fall back to English if LibreTranslate is unavailable
+    - _Requirements: 2.3, 2.4, 14.3, 14.5_
+  - [ ]* 5.5 Write property test for translation cache round trip (Property 6)
+    - **Property 6: Translation Cache Round Trip**
+    - **Validates: Requirements 2.3, 14.3_
+  - [x] 5.6 Implement `PUT /api/recipes/:id` and `DELETE /api/recipes/:id`
+    - Enforce ownership: return 403 if `author_id` does not match authenticated user
+    - _Requirements: 4.7_
+  - [ ]* 5.7 Write property test for recipe ownership authorization (Property 9)
+    - **Property 9: Recipe Ownership Authorization**
+    - **Validates: Requirements 4.7**
+  - [x] 5.8 Implement content moderation endpoints
+    - `GET /api/moderation/queue` — list pending items
+    - `POST /api/moderation/:id/approve` — set `status = "published"`, trigger notification to author
+    - `POST /api/moderation/:id/reject` — set `status = "rejected"`, store `rejection_reason`, trigger notification
+    - Automated pre-screening: flag content with prohibited keywords before queuing
+    - _Requirements: 4.3, 4.4, 4.5, 15.1, 15.2, 15.3, 15.6_
+  - [ ]* 5.9 Write property test for moderation queue invariant (Property 7)
+    - **Property 7: Moderation Queue Invariant**
+    - **Validates: Requirements 4.3, 6.5, 7.7, 15.1**
+  - [ ]* 5.10 Write property test for moderation state transitions (Property 8)
+    - **Property 8: Moderation State Transitions**
+    - **Validates: Requirements 4.4, 4.5, 15.6**
+  - [ ]* 5.11 Write property test for input sanitization (Property 41)
+    - **Property 41: Input Sanitization**
+    - **Validates: Requirements 19.4**
+  - [x] 5.12 Implement ratings endpoints `POST /api/recipes/:id/ratings`
+    - Upsert rating (INSERT … ON CONFLICT DO UPDATE) to enforce one rating per user per recipe
+    - _Requirements: 6.1, 6.7_
+  - [ ]* 5.13 Write property test for rating upsert (Property 14)
+    - **Property 14: Rating Upsert (One Rating Per User Per Recipe)**
+    - **Validates: Requirements 6.1, 6.7**
+  - [ ]* 5.14 Write property test for average rating computation (Property 15)
+    - **Property 15: Average Rating Computation**
+    - **Validates: Requirements 6.2**
+  - [x] 5.15 Implement comments endpoints `POST /api/recipes/:id/comments` and `DELETE /api/recipes/:id/comments/:commentId`
+    - Validate text ≤ 2000 chars, optional video ≤ 100MB MP4/MOV; queue for moderation
+    - Return comments sorted by `created_at` DESC
+    - _Requirements: 6.3, 6.4, 6.5, 6.6_
+  - [ ]* 5.16 Write property test for comment ordering (Property 16)
+    - **Property 16: Comment Ordering**
+    - **Validates: Requirements 6.4**
+  - [x] 5.17 Sync published recipes to Meilisearch after moderation approval
+    - On approve, call Meilisearch `addDocuments` with flattened recipe fields
+    - _Requirements: 5.6_
+
+- [ ] 6. Checkpoint — Recipe backend complete
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 7. Search service (Meilisearch + pgvector)
+  - [x] 7.1 Implement `GET /api/search` — keyword search with filters
+    - Proxy query to Meilisearch with filter params (region, dietary_tag, prep_time_mins, rating)
+    - Cache results in Redis with 60s TTL
+    - Fall back to PostgreSQL `ILIKE` if Meilisearch is unavailable
+    - _Requirements: 5.1, 5.2, 5.3_
+  - [ ]* 7.2 Write property test for search response time (Property 10)
+    - **Property 10: Search Response Time**
+    - **Validates: Requirements 5.1**
+  - [ ]* 7.3 Write property test for typo-tolerant search (Property 11)
+    - **Property 11: Typo-Tolerant Search**
+    - **Validates: Requirements 5.2**
+  - [ ]* 7.4 Write property test for search filter correctness (Property 12)
+    - **Property 12: Search Filter Correctness**
+    - **Validates: Requirements 5.3**
+  - [x] 7.5 Implement `GET /api/search/autocomplete` — suggestions after 2+ characters
+    - Query Meilisearch with `limit: 5`; return only when `q.length >= 2`
+    - _Requirements: 5.5_
+  - [ ]* 7.6 Write property test for autocomplete threshold (Property 13)
+    - **Property 13: Autocomplete Threshold**
+    - **Validates: Requirements 5.5**
+  - [x] 7.7 Implement `GET /api/search/semantic` — pgvector similarity search
+    - Generate query embedding via Gemini embeddings API; run `ORDER BY embedding <-> $1 LIMIT 20`
+    - _Requirements: 5.4_
+
+- [x] 8. Social feed backend (MongoDB)
+  - [x] 8.1 Implement `POST /api/feed/posts` — create post
+    - Validate caption ≤ 500 chars, ≤ 10 images, video ≤ 200MB; set `status = "pending"`
+    - _Requirements: 7.2, 7.7_
+  - [x] 8.2 Implement `GET /api/feed` — personal feed
+    - Query `follows` collection for followed user IDs; return published posts sorted by `created_at` DESC
+    - _Requirements: 7.1_
+  - [ ]* 8.3 Write property test for social feed follows filter (Property 17)
+    - **Property 17: Social Feed Follows Filter**
+    - **Validates: Requirements 7.1**
+  - [x] 8.4 Implement follow/unfollow endpoints `POST /api/feed/follow/:userId` and `DELETE /api/feed/follow/:userId`
+    - _Requirements: 7.4_
+  - [ ]* 8.5 Write property test for follow/unfollow round trip (Property 18)
+    - **Property 18: Follow/Unfollow Round Trip**
+    - **Validates: Requirements 7.4**
+  - [x] 8.6 Implement `GET /api/feed/discover` — trending posts
+    - Return published posts from all users within past 7 days, sorted by `likes_count + comments_count + shares_count` DESC
+    - _Requirements: 7.6_
+  - [ ]* 8.7 Write property test for discover feed ranking (Property 19)
+    - **Property 19: Discover Feed Ranking**
+    - **Validates: Requirements 7.6**
+  - [x] 8.8 Implement post likes, comments, and shares endpoints
+    - `POST /api/feed/posts/:id/like`, `POST /api/feed/posts/:id/comments`, `POST /api/feed/posts/:id/share`
+    - Increment denormalized counters on the post document
+    - _Requirements: 7.3_
+
+- [x] 9. AI services (Recipe Fixer, Dish Scanner, Audio Guide)
+  - [x] 9.1 Implement `POST /api/ai/fixer` — Recipe Fixer
+    - Check `ai_usage` table: reject with 429 if `fixer_count >= 5` for free/trial users; no limit for premium
+    - Call Gemini API with problem description (≤ 1000 chars); return ≥ 3 suggestions
+    - On Gemini error/timeout, return 502 with retry prompt; do not decrement quota
+    - Log query + anonymized response to `ai_usage`
+    - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7_
+  - [ ]* 9.2 Write property test for Recipe Fixer response quality (Property 20)
+    - **Property 20: Recipe Fixer Response Quality**
+    - **Validates: Requirements 8.1**
+  - [ ]* 9.3 Write property test for Recipe Fixer quota enforcement (Property 21)
+    - **Property 21: Recipe Fixer Quota Enforcement**
+    - **Validates: Requirements 8.4, 8.5**
+  - [x] 9.4 Implement `POST /api/ai/scanner` — Dish Scanner
+    - Accept JPEG/PNG/WEBP ≤ 10MB; run YOLOv8 inference
+    - If confidence ≥ 60%: return dish name, region, nutritional breakdown
+    - If confidence < 60%: return identification failure message; do not return nutrition data
+    - _Requirements: 9.1, 9.2, 9.3, 9.4_
+  - [ ]* 9.5 Write property test for Dish Scanner response completeness (Property 22)
+    - **Property 22: Dish Scanner Response Completeness**
+    - **Validates: Requirements 9.1**
+  - [ ]* 9.6 Write property test for Dish Scanner low-confidence handling (Property 23)
+    - **Property 23: Dish Scanner Low-Confidence Handling**
+    - **Validates: Requirements 9.3**
+  - [x] 9.7 Implement `POST /api/ai/audio` — Audio Guide generation
+    - Call AI TTS service with recipe steps in user's preferred language; return audio stream URL
+    - _Requirements: 10.1, 10.3_
+  - [x] 9.8 Implement `GET /api/ai/audio/:recipeId/download` — offline download (premium only)
+    - Return 403 for free/trial users; return signed download URL for premium users
+    - _Requirements: 10.4, 10.5_
+  - [ ]* 9.9 Write property test for Audio Guide language matching (Property 24)
+    - **Property 24: Audio Guide Language Matching**
+    - **Validates: Requirements 10.3**
+  - [ ]* 9.10 Write property test for Audio Guide premium gate (Property 25)
+    - **Property 25: Audio Guide Premium Gate**
+    - **Validates: Requirements 10.4**
+
+- [ ] 10. Checkpoint — AI services complete
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 11. Subscription and Razorpay backend
+  - [x] 11.1 Implement `POST /api/subscriptions/create` — initiate Razorpay subscription
+    - Create Razorpay subscription with autopay; return `subscription_id` and checkout URL
+    - _Requirements: 13.4_
+  - [x] 11.2 Implement webhook handler `POST /api/webhooks/razorpay`
+    - Verify HMAC-SHA256 signature using `RAZORPAY_WEBHOOK_SECRET`; return HTTP 400 + log on invalid signature
+    - Use `razorpay_event_id` UNIQUE constraint for idempotency
+    - Handle `subscription.activated`: set `subscription_status = "active"`, `is_premium = true`
+    - Handle `subscription.charged`: record payment, extend `next_billing_date`
+    - Handle `subscription.cancelled` / `payment.failed`: set `is_premium = false`, update `subscription_status`
+    - Trigger notification service on `payment.failed`
+    - _Requirements: 13.5, 13.6, 13.7, 13.8, 13.9, 19.5_
+  - [ ]* 11.3 Write property test for webhook signature verification (Property 33)
+    - **Property 33: Webhook Signature Verification**
+    - **Validates: Requirements 13.8, 13.9, 19.5**
+  - [ ]* 11.4 Write property test for webhook subscription state transitions (Property 34)
+    - **Property 34: Webhook Subscription State Transitions**
+    - **Validates: Requirements 13.5, 13.6, 13.7**
+  - [x] 11.5 Implement paywall middleware
+    - Middleware checks `trial_start_date` + `subscription_status`; returns 402 if trial expired and not active
+    - Apply to premium feature routes: `/api/ai/fixer` (quota), `/api/ai/audio/:id/download`, `/api/academy` (non-free lessons)
+    - _Requirements: 13.2, 13.11_
+  - [ ]* 11.6 Write property test for paywall enforcement after trial expiry (Property 35)
+    - **Property 35: Paywall Enforcement After Trial Expiry**
+    - **Validates: Requirements 13.2**
+
+- [x] 12. Notifications backend
+  - [x] 12.1 Implement notification creation helper used by other services
+    - Insert into `notifications` table; respect user's notification preferences before inserting
+    - _Requirements: 17.1, 17.2_
+  - [ ]* 12.2 Write property test for notification preference filtering (Property 36)
+    - **Property 36: Notification Preference Filtering**
+    - **Validates: Requirements 17.2**
+  - [x] 12.3 Implement `GET /api/notifications` and `PATCH /api/notifications/:id/read`
+    - _Requirements: 17.1_
+  - [x] 12.4 Implement `PATCH /api/notifications/preferences` — update notification settings
+    - _Requirements: 17.2_
+  - [x] 12.5 Implement dual notification on `payment.failed` (in-app + email within 5 minutes)
+    - Called from webhook handler; create in-app notification record and dispatch email via transactional email service
+    - _Requirements: 17.3_
+  - [ ]* 12.6 Write property test for payment failure dual notification (Property 37)
+    - **Property 37: Payment Failure Dual Notification**
+    - **Validates: Requirements 17.3**
+
+- [x] 13. Marketplace and Academy backend
+  - [x] 13.1 Implement Academy CRUD endpoints
+    - `GET /api/academy/courses` — list courses
+    - `GET /api/academy/courses/:courseId/lessons/:lessonId` — get lesson (enforce free-tier access: only `order_index = 1` accessible without premium)
+    - `POST /api/academy/lessons/:lessonId/complete` — mark lesson complete, update progress, award badge if 100%
+    - _Requirements: 11.1, 11.2, 11.4, 11.5, 11.6, 11.7_
+  - [ ]* 13.2 Write property test for course lesson ordering invariant (Property 26)
+    - **Property 26: Course Lesson Ordering Invariant**
+    - **Validates: Requirements 11.1**
+  - [ ]* 13.3 Write property test for course progress computation (Property 27)
+    - **Property 27: Course Progress Computation**
+    - **Validates: Requirements 11.2**
+  - [ ]* 13.4 Write property test for badge award on course completion (Property 28)
+    - **Property 28: Badge Award on Course Completion**
+    - **Validates: Requirements 11.4**
+  - [ ]* 13.5 Write property test for Academy access control (Property 29)
+    - **Property 29: Academy Access Control**
+    - **Validates: Requirements 11.6, 11.7**
+  - [x] 13.6 Implement Marketplace endpoints
+    - `GET /api/marketplace` — list listings with filters (region, category, availability)
+    - `POST /api/marketplace` — create listing (verified suppliers only)
+    - `GET /api/marketplace?recipeId=:id` — filter by recipe's key ingredients
+    - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5_
+  - [ ]* 13.7 Write property test for marketplace listing completeness (Property 30)
+    - **Property 30: Marketplace Listing Completeness**
+    - **Validates: Requirements 12.1**
+  - [ ]* 13.8 Write property test for marketplace filter correctness (Property 31)
+    - **Property 31: Marketplace Filter Correctness**
+    - **Validates: Requirements 12.5**
+  - [ ]* 13.9 Write property test for out-of-stock listing behavior (Property 32)
+    - **Property 32: Out-of-Stock Listing Behavior**
+    - **Validates: Requirements 12.6**
+
+- [ ] 14. Checkpoint — Backend complete
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 15. Profile backend
+  - [x] 15.1 Implement `GET /api/profile/:userId` — user profile
+    - Return display name, avatar, bio, follower/following counts, submitted recipes, posts, badges, saved recipes
+    - Enforce private profile: return 403 for non-followers if `profile_visibility = "private"`
+    - _Requirements: 16.1, 16.3, 16.4_
+  - [ ]* 15.2 Write property test for private profile access control (Property 42)
+    - **Property 42: Private Profile Access Control**
+    - **Validates: Requirements 16.4**
+  - [x] 15.3 Implement `PATCH /api/profile` — update profile fields
+    - Allow editing display name, avatar, bio, preferred language, profile visibility
+    - _Requirements: 16.2_
+  - [x] 15.4 Implement `GET /api/profile/:userId/passport` — Culinary Passport
+    - Return distinct region IDs from recipes the user has saved or marked as cooked
+    - _Requirements: 16.5_
+  - [ ]* 15.5 Write property test for Culinary Passport accuracy (Property 43)
+    - **Property 43: Culinary Passport Accuracy**
+    - **Validates: Requirements 16.5**
+  - [ ]* 15.6 Write property test for pagination size invariant (Property 38)
+    - **Property 38: Pagination Size Invariant**
+    - **Validates: Requirements 18.3**
+
+- [x] 16. Next.js frontend — core pages
+  - [x] 16.1 Implement app shell layout with navigation and auth guard
+    - Create `app/(app)/layout.tsx` with nav bar, paywall guard middleware (checks JWT + subscription status), and redirect to `/login` on expired session while preserving the attempted URL
+    - _Requirements: 1.6, 13.2_
+  - [x] 16.2 Implement auth pages: `/login` and `/register`
+    - Email/password forms + Google and Apple OAuth buttons
+    - Display descriptive error on duplicate email or failed login
+    - _Requirements: 1.1, 1.5_
+  - [x] 16.3 Implement onboarding page `/onboarding`
+    - Multi-step form collecting dietary preferences, cuisine interests, preferred language
+    - Submit to `POST /api/auth/onboarding` then redirect to home
+    - _Requirements: 1.3, 1.4_
+  - [x] 16.4 Implement Discovery Home page `app/(app)/page.tsx`
+    - Personalized recipe feed using user preferences; infinite scroll (20 items/page)
+    - `RecipeCard` component with Flavor Spectrum bar, average rating, region chip, Family Recipe badge
+    - _Requirements: 1.4, 2.7, 6.2, 18.3_
+  - [x] 16.5 Implement Recipe Detail page `app/(app)/recipes/[id]/page.tsx`
+    - Display recipe in both original and user's preferred language
+    - Show Audio Guide player (`AudioGuidePlayer` component with play/pause/skip/repeat)
+    - Show "Find Ingredients" shortcut linking to Marketplace filtered by recipe ingredients
+    - Show ratings, comments (most recent first), and comment submission form
+    - _Requirements: 2.3, 2.4, 2.5, 6.2, 6.3, 6.4, 10.1, 10.2, 12.2_
+  - [x] 16.6 Implement Recipe Creator Studio `app/(app)/recipes/create/page.tsx`
+    - Rich-text step editor, ingredient quantity fields, image/video upload per step
+    - "Family/Grandmother Recipe" toggle
+    - Submit to `POST /api/recipes`; show pending moderation message on success
+    - _Requirements: 4.1, 4.2, 4.6_
+  - [x] 16.7 Implement Tastes of the World Map `app/(app)/map/page.tsx`
+    - Interactive SVG/canvas world map; clicking a region navigates to filtered recipe list
+    - Request geolocation permission and auto-suggest local region recipes
+    - _Requirements: 3.2, 3.3_
+  - [x] 16.8 Implement Search UI with autocomplete
+    - `SearchBar` component: call `/api/search/autocomplete` after 2 characters; debounce 150ms
+    - Search results page with filter sidebar (region, dietary tag, prep time, rating)
+    - Show "No recipes found" + contribute CTA when results are empty for a destination
+    - _Requirements: 3.4, 5.3, 5.5_
+  - [x] 16.9 Implement User Profile page `app/(app)/profile/[userId]/page.tsx`
+    - Display all profile fields, Culinary Passport map section, earned badges
+    - Show subscription status, next billing date, and cancellation option for own profile
+    - _Requirements: 13.10, 16.1, 16.5_
+  - [x] 16.10 Implement Settings page `app/(app)/settings/page.tsx`
+    - Edit display name, avatar, bio, preferred language, profile visibility
+    - Notification preference toggles per category
+    - _Requirements: 16.2, 16.3, 17.2_
+
+- [x] 17. Next.js frontend — AI features
+  - [x] 17.1 Implement AI Recipe Fixer page `app/(app)/fixer/page.tsx`
+    - Chat-style `RecipeFixerChat` component; text input ≤ 1000 chars
+    - Display ≥ 3 suggestions in response; show quota remaining for free/trial users
+    - Show 502 error with retry button on Gemini failure
+    - _Requirements: 8.1, 8.2, 8.5, 8.6_
+  - [x] 17.2 Implement Dish Scanner page `app/(app)/scanner/page.tsx`
+    - `DishScannerUpload` drag-and-drop component accepting JPEG/PNG/WEBP ≤ 10MB
+    - Display dish name, region, nutritional breakdown with approximate disclaimer
+    - Show "Could not identify" message + manual search link on low confidence
+    - Show link to matching recipe if one exists
+    - _Requirements: 9.1, 9.3, 9.4, 9.5_
+  - [x] 17.3 Wire `AudioGuidePlayer` into Recipe Detail page
+    - Floating player with play/pause/skip to next step/repeat current step controls
+    - Show download button for premium users; show paywall prompt for free/trial users
+    - Show retry button on download failure
+    - _Requirements: 10.1, 10.2, 10.4, 10.5_
+
+- [x] 18. Next.js frontend — Social Feed
+  - [x] 18.1 Implement Social Feed page `app/(app)/feed/page.tsx`
+    - Personal feed tab (followed users' posts) and Discover tab (trending, past 7 days)
+    - Infinite scroll, 20 posts per page
+    - Like, comment, share actions on each post
+    - Tappable recipe tag links to Recipe Detail page
+    - _Requirements: 7.1, 7.3, 7.5, 7.6, 18.3_
+  - [x] 18.2 Implement post creation form
+    - Caption ≤ 500 chars, up to 10 image uploads, one video ≤ 200MB, recipe tag search
+    - Submit to `POST /api/feed/posts`; show pending moderation message
+    - _Requirements: 7.2, 7.7_
+  - [x] 18.3 Implement follow/unfollow button on profile pages
+    - Call follow/unfollow endpoints; update follower/following counts optimistically
+    - _Requirements: 7.4_
+
+- [x] 19. Next.js frontend — Subscription and Paywall
+  - [x] 19.1 Implement `PaywallOverlay` component
+    - Glassmorphism design overlay with premium value proposition copy and subscribe CTA
+    - Render over premium feature pages when user is not active subscriber
+    - _Requirements: 13.2, 13.3_
+  - [x] 19.2 Implement subscription checkout flow
+    - "Subscribe" button calls `POST /api/subscriptions/create`; redirect to Razorpay checkout URL
+    - On return, poll subscription status and update UI
+    - _Requirements: 13.4_
+  - [x] 19.3 Implement Culinary Academy pages
+    - Course list `app/(app)/academy/page.tsx` — show all courses with progress bars
+    - Lesson page `app/(app)/academy/[courseId]/[lessonId]/page.tsx` — render lesson content, mark complete button
+    - Show paywall overlay on non-free lessons for free-tier users
+    - Display completion badge on profile when course is 100% complete
+    - _Requirements: 11.1, 11.2, 11.4, 11.5, 11.6, 11.7_
+  - [x] 19.4 Implement Marketplace page `app/(app)/marketplace/page.tsx`
+    - Listing cards with supplier name, ingredient, region, price, unit, availability
+    - Filter sidebar (region, category, availability)
+    - "Out of Stock" indicator with disabled order action
+    - _Requirements: 12.1, 12.4, 12.5, 12.6_
+
+- [ ] 20. Checkpoint — Frontend complete
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 21. Property-based tests (fast-check) — remaining properties
+  - [ ]* 21.1 Write property test for automated content pre-screening (Property 44)
+    - **Property 44: Automated Content Pre-Screening**
+    - **Validates: Requirements 15.2, 15.3**
+  - [ ]* 21.2 Write integration test for Razorpay webhook idempotency
+    - Verify that sending the same `razorpay_event_id` twice results in exactly one `subscription_events` row and no duplicate state changes
+    - _Requirements: 13.8_
+  - [ ]* 21.3 Write integration test for Meilisearch sync on recipe approval
+    - Verify that approving a recipe causes it to appear in Meilisearch search results
+    - _Requirements: 5.6_
+  - [ ]* 21.4 Write integration test for LibreTranslate fallback
+    - Simulate LibreTranslate unavailability; verify recipe is served in English with fallback banner
+    - _Requirements: 14.5_
+
+- [x] 22. Deployment setup
+  - [x] 22.1 Write Dockerfile for the Express API
+    - Multi-stage build: install deps → compile TypeScript → production image
+    - _Requirements: 18.4_
+  - [x] 22.2 Write Dockerfile for the Next.js frontend
+    - Multi-stage build with `next build` and standalone output
+    - _Requirements: 18.2_
+  - [x] 22.3 Write production `docker-compose.yml` (or Kubernetes manifests)
+    - Wire all services: API, web, PostgreSQL, MongoDB, Redis, Meilisearch
+    - Add health checks and restart policies
+    - _Requirements: 18.4_
+  - [x] 22.4 Configure CDN for static assets
+    - Set `next.config.js` `assetPrefix` to CDN URL; configure cache headers for images, fonts, icons
+    - _Requirements: 18.2_
+
+- [x] 23. Final checkpoint — Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+## Notes
+
+- Tasks marked with `*` are optional and can be skipped for a faster MVP
+- Each task references specific requirements for traceability
+- Property numbers (e.g., Property 3) map directly to the design document's Correctness Properties section
+- All property-based tests use `fast-check` with a minimum of 100 iterations and a comment tag: `// Feature: global-culinary-compass, Property N: <property_text>`
+- Unit tests and property tests are complementary — unit tests cover specific examples and integration points not covered by properties

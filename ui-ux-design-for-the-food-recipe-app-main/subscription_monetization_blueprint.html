@@ -1,0 +1,27 @@
+# Subscription & Monetization Blueprint: Global Culinary Compass
+
+## 1. Overview
+Implementing a high-end subscription model with a 30-day trial and Razorpay integration, utilizing a secure "Webhook" architecture for backend-to-backend verification.
+
+## 2. Database Schema (PostgreSQL/MongoDB)
+Add the following fields to the `Users` table:
+*   `trial_start_date`: (Timestamp) Captured upon email verification.
+*   `is_premium`: (Boolean) Default: `false`.
+*   `subscription_status`: (String) `trialing`, `active`, `expired`, `canceled`.
+
+## 3. Business Logic
+*   **Access Check:** If `current_date - trial_start_date > 30 days` AND `is_premium == false`, trigger the Paywall UI.
+
+## 4. Razorpay Integration
+*   **Backend (Node.js/Express):** Uses `razorpay` NPM package. Defines plans and creates `subscription_id`. Keys stored in `.env`.
+*   **Frontend (Flutter/React Native):** Uses `razorpay_flutter` or `react-native-razorpay`. Handles checkout overlay and returns `payment_id`.
+*   **Webhook Security:** Razorpay server sends a signed message to the Node.js server upon successful payment. Server verifies signature before updating `is_premium` to `true`.
+
+## 5. UI/UX Strategy: "The Premium Invitation"
+*   **Visuals:** Glassmorphism/subtle background blur over restricted content.
+*   **Messaging:** "Unlock Grandmother's Secret Recipes" (Focus on value over payment).
+*   **Value Proposition:**
+    *   Unlimited AI Recipe Fixes.
+    *   Ad-free Global Culinary Map.
+    *   Offline Audio Guide.
+    *   30-Day Free Trial.

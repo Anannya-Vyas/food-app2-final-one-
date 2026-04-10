@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Culinary Profile | Digital Gastronome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e0e0ff",
+              "outline": "#8a726c",
+              "on-error": "#ffffff",
+              "background": "#fcf9f6",
+              "on-surface": "#1c1c1a",
+              "on-secondary-fixed": "#000767",
+              "secondary-container": "#959efd",
+              "surface-tint": "#a03f29",
+              "surface-container-low": "#f6f3f0",
+              "surface-container": "#f0edea",
+              "on-tertiary-fixed-variant": "#633f00",
+              "primary-fixed": "#ffdad2",
+              "surface-bright": "#fcf9f6",
+              "secondary-fixed-dim": "#bdc2ff",
+              "on-primary-fixed": "#3d0700",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e5e2df",
+              "tertiary": "#825400",
+              "on-primary-fixed-variant": "#812914",
+              "primary-container": "#c0573e",
+              "outline-variant": "#ddc0ba",
+              "tertiary-fixed-dim": "#feb956",
+              "surface-dim": "#dcdad7",
+              "on-secondary-fixed-variant": "#343d96",
+              "surface-container-high": "#eae8e5",
+              "on-secondary-container": "#27308a",
+              "on-surface-variant": "#56423d",
+              "inverse-primary": "#ffb4a3",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#ffddb4",
+              "surface-variant": "#e5e2df",
+              "tertiary-container": "#a36b04",
+              "primary": "#a03f28",
+              "secondary": "#4c56af",
+              "on-tertiary-container": "#ffffff",
+              "on-primary-container": "#120100",
+              "inverse-surface": "#31302f",
+              "inverse-on-surface": "#f3f0ed",
+              "primary-fixed-dim": "#ffb4a3",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "on-secondary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c1a",
+              "surface": "#fcf9f6",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bento-card-hover:hover {
+        transform: scale(1.01);
+      }
+      .flavor-gradient {
+        background: linear-gradient(135deg, #a03f28 0%, #c0573e 100%);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#fcf9f6] dark:bg-stone-950 shadow-[0_0_40px_rgba(28,28,26,0.06)] flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-bold tracking-tighter text-[#a03f28] dark:text-[#c0573e] font-headline">Culinary Compass</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8">
+<a class="font-manrope tracking-tight text-stone-900 dark:text-stone-100 hover:bg-[#e5e2df] px-3 py-1 rounded-lg transition-all" href="#">Explore</a>
+<a class="font-manrope tracking-tight text-stone-900 dark:text-stone-100 hover:bg-[#e5e2df] px-3 py-1 rounded-lg transition-all" href="#">Global Feed</a>
+<a class="text-[#a03f28] font-bold font-manrope tracking-tight" href="#">Profile</a>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container rounded-full" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Side Navigation Bar (Web) -->
+<nav class="hidden md:flex flex-col py-8 gap-6 h-screen w-64 fixed left-0 top-0 bg-[#fcf9f6] dark:bg-stone-950 border-r-0 z-40 pt-24">
+<div class="px-6 mb-4">
+<p class="font-black text-[#a03f28] font-headline text-lg">Digital Gastronome</p>
+<p class="font-manrope uppercase tracking-[0.05em] text-[10px] text-on-surface-variant">Precision AI Kitchen</p>
+</div>
+<div class="space-y-2">
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] transition-all font-label uppercase tracking-wider text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+                Assistant
+            </a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] transition-all font-label uppercase tracking-wider text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="explore_neighbor">explore_nearby</span>
+                Discovery
+            </a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] transition-all font-label uppercase tracking-wider text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                Heritage
+            </a>
+<a class="flex items-center gap-3 text-[#56423d] dark:text-stone-400 pl-5 py-3 hover:bg-[#f0edea] transition-all font-label uppercase tracking-wider text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="blender">blender</span>
+                Studio
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-32 px-4 md:px-10 max-w-7xl mx-auto">
+<!-- Profile Header -->
+<section class="mb-12 flex flex-col md:flex-row items-end gap-6">
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-2xl ring-4 ring-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Modern professional portrait of a chef in a sunlit artisan kitchen setting with subtle depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDppvNtmlhnoQewI6SGpC6mXfyQ4AwV6cvpeybSbPiQ0UGOXzQKLTZKaekaHuXaH4781DOVJG-DC6Rh24jmE2nttJSfB8XEPEtZcyJfqbZipsOz6DSEXYEKkMf3BZK-fwt4O6XppZeHHkiU7EBoVlfnclxGF5yWu7fgBqPyab_dnjlN1Eor9IEMdFME-hXWxgSfIFJ8FG5s6bLNK8V5MY3-FmgKYSiZd0YOGKLjBpvAFfm3jnODXN9tstLaX7qycHfkSf_AQUEb67Br"/>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary p-2 rounded-full text-white shadow-lg cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h1 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-on-surface">Elena Vance</h1>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-[10px] font-label font-bold tracking-widest uppercase">Master Contributor</span>
+</div>
+<p class="text-on-surface-variant font-medium text-lg max-w-xl">Curating the intersection of heritage Oaxacan techniques and modern molecular gastronomy.</p>
+<div class="flex gap-4 mt-4">
+<div class="flex flex-col">
+<span class="text-primary font-bold text-xl">142</span>
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Archived Recipes</span>
+</div>
+<div class="w-px h-8 bg-outline-variant opacity-30 self-center"></div>
+<div class="flex flex-col">
+<span class="text-primary font-bold text-xl">8.4k</span>
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Community Impact</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Culinary Impact -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Grandmapedia Contributions (Video) -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-6 overflow-hidden relative">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold font-headline tracking-tight">Grandmapedia Contributions</h2>
+<span class="text-primary text-sm font-bold flex items-center gap-1 cursor-pointer hover:underline">View All <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="relative group aspect-video rounded-lg overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" data-alt="Cinematic shot of elder hands kneading traditional corn dough on a rustic wooden table with morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2AMUadjp49CYt6vQpEJ8Wvd-qbvoZw17BDB0o7sCRDJmF4bSQwS_juOSyTWAAXo4nOhuwVZQ9lmVfDAhxjgT88hui6-o3fh9h0CbQ2YIZlCUb6RITcRpxYrs4EPIxporg6qB6YfUYJHQcXZoGL0Uqsf_yF0vigUN8R3XeJuYfCSceBuc5VDfDbZiuSjYXZMX8zPBZjnixNdBxVLwomEThVnKA79g6iQH_uLjCrgi7Ovldi_vMlQRYuA01pkR0vwz_E9vpMoVtGCsc"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-5xl" data-icon="play_circle">play_circle</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-white/90 backdrop-blur-md text-[10px] font-label font-bold px-2 py-1 rounded-md text-on-surface">The Mole Secret • 04:20</span>
+</div>
+</div>
+<div class="relative group aspect-video rounded-lg overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" data-alt="Close up of bright red chili peppers roasting on a clay comal with soft steam rising in a dimly lit kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvSGw1Z5fLMwo73D2Kf6xWfYodEpu5MrBKLHeDTRE4TQLkKySIiH0ZW9griYhkv0dxupA0uMautICbgMhVYAiA7Tp2Uhw8lT85oonnkUxEYSf2c_DAdFJxe0_D9GpOVZL003E6EwiPLm9plusWphHAAdLW6IZiRJUDHz_xIv6ktfrMEnVQWT2wVmR01SXScrMEtxnUOQ93ENJLXpwWR9CLQrrOBdzJERXxySTbC7PIBtcnYWkKcm5ILh3shiOdDLTWtco2ZNkaje-Q"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-5xl" data-icon="play_circle">play_circle</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-white/90 backdrop-blur-md text-[10px] font-label font-bold px-2 py-1 rounded-md text-on-surface">Roasting Chilis • 02:15</span>
+</div>
+</div>
+</div>
+</div>
+<!-- YOLOv8 Scan History (Visual Insights) -->
+<div class="md:col-span-4 bg-surface-container rounded-xl p-6 flex flex-col justify-between border-l-4 border-primary shadow-sm">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="camera">camera</span>
+<h2 class="text-lg font-bold font-headline uppercase tracking-wide text-xs">AI Scan History</h2>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Overhead shot of a colorful healthy grain bowl with avocado, greens, and eggs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw344OW4oTIeH3wFSAomaaxFVaLhdsTRD_b_cdmxm0MNQOFa3lG9l9AnRy8QIlz7_-ODSAuFwtPYRxQCKl1JblOZud0wkrcx-TWwZgSdAPnA4ZhbRyEA3YYGmSGRHyM07d8baXwx3NZaukIsFINlsXHqURxjPFNU5fQZ-_S4EYFL53PP6NmHggXndLDskaeO0i33FVaSm4thsYKVKPX1mxyRNzRVf-MCe3VpqlyggH-FlhuZzCEKk_TxU6Z94E5FsxaQgOCCZ89Ln4"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Quinoa Power Bowl</p>
+<p class="text-[10px] text-on-surface-variant font-label">Scanned 2h ago • 84% Precision</p>
+</div>
+<span class="text-primary font-bold text-xs">420 kcal</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Artisanal mediterranean salad with feta, olives and fresh herbs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuPjMRZpmucnPdQOlZIxwFqesJsyBj3BsSMGvTlQJAGxGnIZ27ZyjUC_l0-BroHpaEKrN5mSYytfcxQIp40xsUKc2232VgUEo4siv8UWdhyptpoSbPiLhLhvUi6Hop3EgBwKipF33b7JjxDBHxuWbuU7mEBWZb1_K2qKTBAie6lnrz0ju_BmXVemIFwYyvkA69At4WYcyTpoTELGj6rlBcxDYXfY-32PfSexk2T6qGUAZPFTg6aufY-On0Mkl13MA7Qxf2Dqnlmuh5"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Greek Harvest</p>
+<p class="text-[10px] text-on-surface-variant font-label">Scanned 5h ago • 92% Precision</p>
+</div>
+<span class="text-primary font-bold text-xs">210 kcal</span>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-3 flavor-gradient text-white rounded-full font-bold text-sm shadow-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
+                    New Analysis
+                </button>
+</div>
+<!-- Nutritional Gastronome Metrics (YOLO Scan Trends) -->
+<div class="md:col-span-5 bg-surface-container-highest rounded-xl p-6">
+<h2 class="text-lg font-bold font-headline mb-4">Precision Metrics</h2>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-[10px] font-label uppercase tracking-widest font-bold">Macro Balance</span>
+<span class="text-[10px] font-label text-on-surface-variant">Protein Priority</span>
+</div>
+<div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 45%"></div>
+<div class="h-full bg-secondary" style="width: 30%"></div>
+<div class="h-full bg-tertiary" style="width: 25%"></div>
+</div>
+<div class="flex gap-4 mt-2">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-[9px] font-label">Protein</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-[9px] font-label">Carbs</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="text-[9px] font-label">Fats</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-white/40 backdrop-blur-lg rounded-xl flex items-center gap-4">
+<div class="p-3 bg-secondary-fixed text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+</div>
+<div>
+<p class="text-xs font-bold">Nutritional Variance</p>
+<p class="text-[10px] text-on-surface-variant">Your sodium intake decreased by 12% this week.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Heritage Recipe Vault (Saved Secrets) -->
+<div class="md:col-span-7 bg-surface-container-low rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="folder_special" data-weight="fill">folder_special</span>
+<h2 class="text-xl font-bold font-headline tracking-tight">Heritage Recipe Vault</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface hover:bg-surface-container-highest rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="search">search</span>
+</button>
+<button class="p-2 bg-surface hover:bg-surface-container-highest rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-2 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Professional studio shot of a traditional corn tamale wrapped in a green leaf on a dark plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUXN1Q-VSYREmesrik7xdFASpUWTMPVYll3W7bbUD72xb6VCo3RcQg2DKZONtvYmWEn7vQAAWJyEqFN3u_QrGizfOn0a-NFoz9TNkg7Wzl2xxldClJefjtSPDGfXOqukYTXq5pAYrBNWRyTbXeTxuXcY4F4VrCq803VZDCoV_NASqo1nlbgC2Uad1h8H6y6gab-USkDyDVBPSFfB504gVSgTXm1wdI9t-vAPSK93Zmk15o5TDUZHMY4ZHkxIk6H9KPoVBRoZoZSLQW"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<span class="absolute top-2 right-2 text-white material-symbols-outlined text-sm" data-icon="lock" data-weight="fill">lock</span>
+</div>
+<p class="font-bold text-sm mb-0.5">Oaxacan Tamales</p>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Family Secret</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-2 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Rustic pizza with fresh basil and tomatoes on a flour-dusted wooden surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5ttpU3oU34Du0WD2gu5q4sJoxiY7qwI7m7ww3kHyaA-bErpZyYtEc8i2hXk90YvCwhzCp-rNuXw9fxoQYmbrsP-D4k3UvCfYxFp977iaCretID1BnbPH9Rai2ZSMadx5ab0CL5ZC_IZHJmd21rgxBoUN07Ol1xP1CaXs0vSxaUrpXtDRq4B5EJPXob0EtcIFbUOJkbR3yt5D1C_oyXYO_DbMrkJn3laY8C-9pO0LYbuXinRIfQimOkFMix0xnHxI5QhOGm2i9r-Bd"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<span class="absolute top-2 right-2 text-white material-symbols-outlined text-sm" data-icon="public">public</span>
+</div>
+<p class="font-bold text-sm mb-0.5">Heritage Sourdough</p>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Community Vault</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-2 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close up of vibrant green thai curry with exotic herbs and coconut milk in a stone bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2LXT1y1OJomNi-SXaqjKI-6yrkjyfcnHzfBIskZ1fTTH-d6l9Ot3I0Br9cb9akfD_v8vY1WrFL45mKFzD4_nhsRxQpZYc4BuR_vwjQiO5_82pMJwlRAhAMIB0ShcVmzvvamMECLZoPJA5nq0y4elZGdevb6NVgssEwgMzWvTIZALy1-vZFV7FgWsbvWUieaaOajDIezVOABo30ab74-VBo32K096ZPkYcRHL-E5ahGoReSisGsA0p1OLPPHQGZnLjemjFOmJR6wnt"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<span class="absolute top-2 right-2 text-white material-symbols-outlined text-sm" data-icon="lock" data-weight="fill">lock</span>
+</div>
+<p class="font-bold text-sm mb-0.5">Forest Green Curry</p>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Grandma's Mix</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-end px-6 pb-6 pt-2 bg-[#fcf9f6]/60 dark:bg-stone-950/60 backdrop-blur-3xl rounded-t-[1.5rem] shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">AI Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#a03f28] to-[#c0573e] text-white rounded-full p-3 w-12 h-12 mb-2 scale-105 duration-300">
+<span class="material-symbols-outlined" data-icon="person_pin">person_pin</span>
+<span class="hidden font-manrope font-medium text-[10px] tracking-wider uppercase">Profile</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-400 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-manrope font-medium text-[10px] tracking-wider uppercase">Create</span>
+</div>
+</nav>
+<!-- Floating Action Button Contextual (Hidden on Profile as per rules, but included for system logic awareness) -->
+<!-- Suppression logic applied: suppress the FAB on Settings, Profile, Details, and Transactional screens. -->
+</body></html>

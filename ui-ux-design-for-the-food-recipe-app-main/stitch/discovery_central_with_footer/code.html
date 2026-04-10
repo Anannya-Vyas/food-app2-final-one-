@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Culinary Compass - Discovery Central</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-container-low": "#f6f3f0",
+                "secondary-fixed-dim": "#bdc2ff",
+                "secondary-fixed": "#e0e0ff",
+                "on-surface-variant": "#56423d",
+                "on-secondary": "#ffffff",
+                "on-surface": "#1c1c1a",
+                "secondary": "#4c56af",
+                "background": "#fcf9f6",
+                "on-primary-container": "#120100",
+                "on-tertiary": "#ffffff",
+                "surface-tint": "#a03f29",
+                "tertiary-fixed-dim": "#feb956",
+                "on-tertiary-container": "#ffffff",
+                "inverse-surface": "#31302f",
+                "primary-fixed": "#ffdad2",
+                "surface-variant": "#e5e2df",
+                "tertiary": "#825400",
+                "primary-fixed-dim": "#ffb4a3",
+                "on-error": "#ffffff",
+                "on-secondary-container": "#27308a",
+                "on-error-container": "#93000a",
+                "surface-container": "#f0edea",
+                "outline": "#8a726c",
+                "inverse-primary": "#ffb4a3",
+                "on-tertiary-fixed": "#291800",
+                "secondary-container": "#959efd",
+                "surface-bright": "#fcf9f6",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-container": "#a36b04",
+                "on-background": "#1c1c1a",
+                "on-secondary-fixed": "#000767",
+                "surface-dim": "#dcdad7",
+                "on-primary": "#ffffff",
+                "primary-container": "#c0573e",
+                "outline-variant": "#ddc0ba",
+                "on-primary-fixed": "#3d0700",
+                "inverse-on-surface": "#f3f0ed",
+                "tertiary-fixed": "#ffddb4",
+                "primary": "#a03f28",
+                "on-secondary-fixed-variant": "#343d96",
+                "error": "#ba1a1a",
+                "error-container": "#ffdad6",
+                "surface": "#fcf9f6",
+                "surface-container-highest": "#e5e2df",
+                "on-primary-fixed-variant": "#812914",
+                "surface-container-high": "#eae8e5",
+                "on-tertiary-fixed-variant": "#633f00"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Plus Jakarta Sans"],
+                "label": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .bento-item-span-8 { grid-column: span 8; }
+        .bento-item-span-4 { grid-column: span 4; }
+        .bento-item-span-6 { grid-column: span 6; }
+        @media (max-width: 768px) {
+            .bento-item-span-8, .bento-item-span-4, .bento-item-span-6 {
+                grid-column: span 12;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#fcf9f6]/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-[0_40px_40px_rgba(28,28,26,0.06)]">
+<div class="flex justify-between items-center px-6 py-4 max-w-screen-2xl mx-auto w-full">
+<h1 class="text-2xl font-black tracking-tighter text-[#1c1c1a] dark:text-[#fcf9f6]">Global Culinary Compass</h1>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-['Manrope'] font-bold tracking-tight text-lg uppercase text-[#a03f28] dark:text-[#c0573e] font-extrabold hover:text-[#a03f28] transition-colors duration-300 active:scale-95 transition-transform" href="#">Discovery</a>
+<a class="font-['Manrope'] font-bold tracking-tight text-lg uppercase text-[#56423d] dark:text-stone-400 font-medium hover:text-[#a03f28] transition-colors duration-300 active:scale-95 transition-transform" href="#">Feed</a>
+<a class="font-['Manrope'] font-bold tracking-tight text-lg uppercase text-[#56423d] dark:text-stone-400 font-medium hover:text-[#a03f28] transition-colors duration-300 active:scale-95 transition-transform" href="#">Kitchen</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface p-2 hover:bg-surface-container rounded-full transition-all">search</button>
+<button class="material-symbols-outlined text-on-surface p-2 hover:bg-surface-container rounded-full transition-all">account_circle</button>
+</div>
+</div>
+<div class="bg-gradient-to-b from-[#f0edea] to-transparent h-px"></div>
+</header>
+<main class="pt-24 pb-20 px-6 max-w-screen-2xl mx-auto">
+<!-- Header Section -->
+<header class="mb-10 mt-6">
+<div class="flex flex-col gap-1">
+<span class="font-label text-primary font-bold tracking-[0.2em] text-xs uppercase">Welcome Back, Gastronome</span>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-on-surface">Discovery Central</h2>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="bento-grid">
+<!-- Local Specials Card (Span 8) -->
+<section class="bento-item-span-8 group relative overflow-hidden rounded-[2rem] bg-surface-container-low min-h-[400px] flex flex-col justify-end p-8 transition-transform hover:scale-[1.01] duration-500">
+<div class="absolute inset-0 z-0">
+<img alt="Gourmet street tacos with vibrant garnishes and citrus, warm evening lighting, authentic Mexican food market atmosphere" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcg5Igv5nKo6TP7QErOVNcy63TsXING6nO-01QVUCwqd6P2EGZnS89mmhB-isrpsskS6phRh7Gq_zCcAmEnfjeTIEsboi28j2cwo8WiX88RaNak3Ahh_hVhReZXvtRJmeOyNJuuSd7JzY2_UURB46ZP77LVr_-0_T71iP_pg623WZNOX5sfSkEQkSZM2dSCPdkNprc-6m3D1N0p_CBDSlyg3_995Y-2GUVrQYoez39e0y7Ey5MogafWWIJ0MI_lKlZuML86WrdBR82"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed font-label text-[10px] font-bold tracking-widest uppercase rounded-md">Local Special</span>
+<span class="px-3 py-1 bg-white/10 backdrop-blur-md text-white font-label text-[10px] font-bold tracking-widest uppercase rounded-md">Oaxaca, Mexico</span>
+</div>
+<h3 class="font-headline text-4xl font-bold text-white tracking-tight max-w-md">Authentic Mole Negro &amp; Artisanal Tlacoyos</h3>
+<p class="text-white/80 font-body text-lg max-w-lg">Discovered via GPS: Explore the 27-ingredient complex flavors of local maestros.</p>
+<div class="pt-2">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-full font-label font-bold text-sm uppercase tracking-widest hover:shadow-lg transition-all active:scale-95">View Heritage Recipe</button>
+</div>
+</div>
+</section>
+<!-- AI Recipe Fixer (Span 4) -->
+<section class="bento-item-span-4 rounded-[2rem] bg-secondary-container/10 p-8 flex flex-col gap-6 relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-all duration-700"></div>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary to-secondary-fixed flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+</div>
+<div>
+<h3 class="font-headline text-xl font-bold">AI Recipe Fixer</h3>
+<p class="font-body text-sm text-on-surface-variant">Powered by Culinary Intelligence</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/60 backdrop-blur-md p-5 rounded-xl border border-outline-variant/15">
+<p class="text-sm font-body italic text-on-surface-variant">"It looks like your sauce is separating. Try whisking in a teaspoon of warm water or an egg yolk..."</p>
+</div>
+<div class="mt-auto">
+<button class="w-full bg-secondary text-on-secondary py-4 rounded-xl font-label font-bold text-xs uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-secondary/90 transition-colors">
+                        Launch Assistant
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Trending Feed (Span 6) -->
+<section class="bento-item-span-6 rounded-[2rem] bg-surface-container p-8 flex flex-col gap-6">
+<div class="flex justify-between items-end">
+<h3 class="font-headline text-2xl font-bold tracking-tight">Trending Feed</h3>
+<a class="text-primary font-label text-xs font-bold uppercase tracking-widest border-b border-primary/20 pb-1" href="#">See All</a>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-2xl transition-all hover:translate-x-1">
+<img alt="Healthy Buddha bowl with avocado, quinoa, and fresh greens, bright natural lighting" class="w-16 h-16 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnAgJk2Gg9Y0TAR9wKfHBOiuBQvF9PAz_tVPT1H417bgPNapw8GHTNi6cdfgVrkcaMASG_HPkAJ8kSm9j8pDsFl8mvX_1sbpPVev5k7XuJXsACdqbOTNLDiLXYEG6gySDCDn7Ot0itGcBwh548Gfk39e6c1JeSzrHRHH94D7IGm2eLcEc1KTJzap-7dwwsSywQj7uOsPE9YdwQeIgA84J_Wkg-HAYXglcsGX2H67Xlh-yG-x94xq_NmCnlPgvR0S0VT4XZxYiwqrBw"/>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-sm">Zesty Summer Grain Bowl</h4>
+<p class="text-xs text-on-surface-variant">by @chef_elara • 4.2k saves</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-2xl transition-all hover:translate-x-1">
+<img alt="Artisanal sourdough pasta with fresh tomato sauce and basil, rustic aesthetic" class="w-16 h-16 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVrZ4x4fz9DKGhWyCuiwnRlchoyi8jfgzDGUA_CrWpBbJLZQ54YTcXKKRoTBkU4ehjP4HvMLfXQfOnuA17aR1wRZGiA4BWeSvW4RrM17s_FxWCpqAzzciI_dsWy5OKNFteefjgDjUqgtPCi8WDPLg6pu2aqkKloIiXvt4mDwIlb10jUxcUDGwvC6oyxqzGWnauGk3eRw5rbsAvUZ_JC_CQd-2CNMNKlZMwK95beLAbzrUl2vW8F3K58yZ84xvW9I9Ex4fQOIwObF6X"/>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-sm">3-Day Fermented Pasta</h4>
+<p class="text-xs text-on-surface-variant">by @dough_master • 1.8k saves</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-xl">favorite</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-2xl transition-all hover:translate-x-1">
+<img alt="Classic French crepes with chocolate drizzle and berries, soft focus background" class="w-16 h-16 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt0-ZRTfJmjcv97QVWywO56TYQaG2OXlDAK0Bykut6F6jQZQWjJRQy1FVP0R3LkxPfJS9u6QRwiCcp1pz8XciHg4aW3E4hW80yit4yw_FoC9F41CawtOyLLHQj5sgfIl0DK5cpot0wrGfEe8k0L3ci6QCXO3WF4e8C2BnK0UriUdzELMSDlpk2RmDpHeiRj93Vqu0-9NtMVUb9_eIG3y5vhLBUSwbveFuXNaSWujpsOaZDSXgC21MhZenqzomFiVlj5HtMAXkVUAqm"/>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-sm">Parisian Midnight Crepes</h4>
+<p class="text-xs text-on-surface-variant">by @lucas_cooks • 950 saves</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-xl">favorite</span>
+</div>
+</div>
+</section>
+<!-- Stats & Insights (Span 6) -->
+<section class="bento-item-span-6 rounded-[2rem] bg-white border border-outline-variant/10 p-8 flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-2xl font-bold tracking-tight">Daily Gastronome Metrics</h3>
+<p class="font-body text-sm text-on-surface-variant">Analysis of your last 24 hours</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 rounded-3xl bg-surface-container-low flex flex-col gap-2">
+<span class="material-symbols-outlined text-secondary text-2xl">nutrition</span>
+<div class="mt-2">
+<span class="block text-3xl font-black font-headline tracking-tighter">1,420</span>
+<span class="font-label text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Calories Tracked</span>
+</div>
+</div>
+<div class="p-6 rounded-3xl bg-tertiary-fixed/30 flex flex-col gap-2">
+<span class="material-symbols-outlined text-tertiary text-2xl">camera</span>
+<div class="mt-2">
+<span class="block text-3xl font-black font-headline tracking-tighter">12</span>
+<span class="font-label text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Recent Scans</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 mt-auto">
+<div class="flex justify-between items-center">
+<span class="font-label text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">Flavor Profile: Spicy/Earth</span>
+<span class="font-label text-[10px] font-bold tracking-widest uppercase text-primary">78%</span>
+</div>
+<!-- The Flavor Spectrum Component -->
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full w-[78%] bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-8 bg-[#f0edea] dark:bg-[#141412] mt-12">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+<div class="flex flex-col gap-4">
+<h2 class="font-['Manrope'] font-extrabold text-xl text-[#C0573E] dark:text-[#ffddb4] uppercase tracking-[0.2em]">Global Culinary Compass</h2>
+<p class="font-['Plus_Jakarta_Sans'] text-sm text-[#56423d] dark:text-[#e5e2df] opacity-70 max-w-xs leading-relaxed">
+                Empowering digital gastronomes with AI-driven culinary insights and a community of taste explorers.
+            </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
+<div class="flex flex-col gap-4">
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest text-[#a03f28]">Connect</span>
+<nav class="flex flex-col gap-3">
+<a class="font-['Plus_Jakarta_Sans'] text-sm text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#4c56af] transition-all cursor-pointer flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-lg">link</span>
+                        LinkedIn
+                    </a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#4c56af] transition-all cursor-pointer flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-lg">code</span>
+                        GitHub
+                    </a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest text-[#a03f28]">Contact</span>
+<nav class="flex flex-col gap-3">
+<a class="font-['Plus_Jakarta_Sans'] text-sm text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#4c56af] transition-all cursor-pointer flex items-center gap-2 group" href="mailto:hello@culinarycompass.com">
+<span class="material-symbols-outlined text-lg">mail</span>
+                        Email Us
+                    </a>
+</nav>
+</div>
+<div class="flex flex-col gap-4 col-span-2 md:col-span-1">
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest text-[#a03f28]">Legal</span>
+<nav class="flex flex-col gap-3">
+<a class="font-['Plus_Jakarta_Sans'] text-sm text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#4c56af] transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm text-[#56423d] dark:text-[#e5e2df] opacity-70 hover:opacity-100 hover:text-[#4c56af] transition-all cursor-pointer" href="#">Terms of Service</a>
+</nav>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-16 pt-8 border-t border-[#8a726c]/10 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+<p class="font-['Plus_Jakarta_Sans'] text-sm text-[#56423d] dark:text-[#e5e2df] opacity-50">© 2024 Global Culinary Compass. Crafted for the Digital Gastronome.</p>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"><span class="material-symbols-outlined text-sm opacity-60">share</span></div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"><span class="material-symbols-outlined text-sm opacity-60">language</span></div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fcf9f6] dark:bg-stone-900 rounded-t-[1.5rem] border-t border-[#e5e2df]/20 shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center bg-[#f0edea] dark:bg-stone-800 text-[#a03f28] dark:text-[#c0573e] rounded-xl px-4 py-2 hover:bg-[#e5e2df] dark:hover:bg-stone-700 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest">Discovery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-500 px-4 py-2 hover:bg-[#e5e2df] dark:hover:bg-stone-700 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">movie</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-500 px-4 py-2 hover:bg-[#e5e2df] dark:hover:bg-stone-700 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest">Scanner</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#56423d] dark:text-stone-500 px-4 py-2 hover:bg-[#e5e2df] dark:hover:bg-stone-700 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest">Kitchen</span>
+</a>
+</nav>
+<!-- Contextual FAB (Only for Home) -->
+<button class="fixed right-6 bottom-24 md:bottom-10 z-50 w-16 h-16 rounded-full bg-primary text-on-primary shadow-[0_40px_40px_rgba(160,63,40,0.2)] flex items-center justify-center transition-all hover:scale-110 active:scale-95 group">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform">add</span>
+</button>
+</body></html>
