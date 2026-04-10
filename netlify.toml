@@ -1,0 +1,12 @@
+[build]
+  command = "npm install && npm run build"
+  publish = "apps/web/.next"
+  base = "."
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/_next/static/*"
+  to = "/_next/static/:splat"
+  status = 200
