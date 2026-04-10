@@ -91,7 +91,7 @@ export default function RecipeDetailPage() {
       } catch {
         // API unavailable — fall back to mock data
         const mock = MOCK_RECIPES.find(r => r.id === id) || MOCK_RECIPES[0];
-        setRecipe(mock as Recipe);
+        setRecipe(mock as unknown as Recipe);
         setCurrentRating({ avg: mock.averageRating, count: mock.ratingCount });
       }
       finally { setLoading(false); }
