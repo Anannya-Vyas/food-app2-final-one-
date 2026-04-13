@@ -4,8 +4,8 @@ import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
-import api from '../../lib/api';
-import { setToken } from '../../lib/auth';
+import api from '../../../lib/api';
+import { setToken } from '../../../lib/auth';
 
 function LoginForm() {
   const router = useRouter();

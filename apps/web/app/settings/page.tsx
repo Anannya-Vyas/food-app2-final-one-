@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import api from '../../lib/api';
-import { clearToken } from '../../lib/auth';
+import api from '../../../lib/api';
+import { clearToken } from '../../../lib/auth';
 
 type Section = 'account' | 'notifications' | 'privacy' | 'language' | 'ai' | 'billing' | 'help';
 

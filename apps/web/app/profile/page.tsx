@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { getToken } from '../../lib/auth';
+import { getToken } from '../../../lib/auth';
 
 // Redirect /profile to /profile/me or /settings
 export default function ProfileRedirect() {

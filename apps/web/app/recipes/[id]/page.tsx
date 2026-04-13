@@ -3,8 +3,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import api from '../../lib/api';
-import { MOCK_RECIPES } from '../../lib/mockData';
+import api from '../../../../lib/api';
+import { MOCK_RECIPES } from '../../../../lib/mockData';
 
 interface Recipe {
   id: string;

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import api from '../../lib/api';
+import api from '../../../lib/api';
 
 interface Region {
   id: string;

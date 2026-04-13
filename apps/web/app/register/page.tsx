@@ -3,8 +3,8 @@
 import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import api from '../../lib/api';
-import { setToken } from '../../lib/auth';
+import api from '../../../lib/api';
+import { setToken } from '../../../lib/auth';
 
 export default function RegisterPage() {
   const router = useRouter();

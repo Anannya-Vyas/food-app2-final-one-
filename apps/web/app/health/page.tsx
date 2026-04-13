@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import api from '../../lib/api';
+import api from '../../../lib/api';
 
 const CONDITIONS = [
   { id: 'diabetes', label: 'Diabetes', icon: '🩸', tag: 'diabetic-friendly', description: 'Low glycemic index, no refined sugar' },
