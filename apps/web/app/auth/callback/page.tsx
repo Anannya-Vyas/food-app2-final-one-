@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { setToken } from '../../../lib/auth';
+import { setToken } from '../../lib/auth';
 
 function AuthCallbackInner() {
   const router = useRouter();

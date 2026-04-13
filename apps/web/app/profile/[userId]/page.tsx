@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import api from '../../../lib/api';
+import api from '../../lib/api';
 
 interface Recipe { id: string; title: string; coverImageUrl?: string; cover_image_url?: string; region?: { name: string }; }
 interface Post { _id: string; caption: string; media?: Array<{ type: string; url: string }>; likes_count: number; created_at: string; }
