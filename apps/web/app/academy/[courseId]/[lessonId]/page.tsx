@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import api from '../../../../../lib/api';
+import api from '../../../../lib/api';
 
 interface LessonContent { text?: string; tips?: string[]; }
 

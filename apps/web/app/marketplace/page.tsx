@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import api from '../../../lib/api';
+import api from '../../lib/api';
 
 interface Supplier { id: string; displayName: string; avatarUrl?: string | null; }
 interface Region { id: string; name: string; country: string; }

@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
-import api from '../../../lib/api';
-import { MOCK_RECIPES, MOCK_TOTAL } from '../../../lib/mockData';
+import api from '../../lib/api';
+import { MOCK_RECIPES, MOCK_TOTAL } from '../../lib/mockData';
 
 interface Recipe {
   id: string;

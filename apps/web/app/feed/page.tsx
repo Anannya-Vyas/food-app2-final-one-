@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
-import api from '../../../lib/api';
+import api from '../../lib/api';
 
 interface RecipeTag { id: string; title: string; }
 interface Post {
