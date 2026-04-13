@@ -47,7 +47,7 @@ async function recordEvent(
         userId,
         eventType,
         razorpayEventId,
-        payload,
+        payload: payload as any,
       },
     });
     return true;
