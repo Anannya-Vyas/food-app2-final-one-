@@ -1,9 +1,12 @@
 # Build stage
-FROM node:18-alpine AS builder
+FROM node:18-slim AS builder
 
 WORKDIR /app
 
-# Copy package files and install all dependencies (including devDependencies for tsc)
+# Install build dependencies
+RUN apt-get update && apt-get install -y openssl
+
+# Copy package files and install all dependencies
 COPY package.json package-lock.json* ./
 RUN npm install
 
@@ -11,16 +14,19 @@ RUN npm install
 COPY src ./src
 COPY prisma ./prisma
 
-# Write a self-contained tsconfig (avoids monorepo extends path issues in Docker)
+# Write a self-contained tsconfig
 RUN printf '{\n  "compilerOptions": {\n    "target": "ES2022",\n    "module": "commonjs",\n    "lib": ["ES2022"],\n    "strict": false,\n    "noImplicitAny": false,\n    "strictNullChecks": false,\n    "esModuleInterop": true,\n    "skipLibCheck": true,\n    "forceConsistentCasingInFileNames": true,\n    "resolveJsonModule": true,\n    "declaration": true,\n    "sourceMap": true,\n    "outDir": "dist",\n    "rootDir": "src",\n    "baseUrl": "."\n  },\n  "include": ["src/**/*"],\n  "exclude": ["node_modules", "dist"]\n}\n' > tsconfig.json
 
 # Compile TypeScript
 RUN npx tsc
 
 # Runtime stage
-FROM node:18-alpine
+FROM node:18-slim
 
 WORKDIR /app
+
+# Install runtime dependencies for Prisma (OpenSSL)
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # Copy package files
 COPY package.json package-lock.json* ./
@@ -28,12 +34,11 @@ COPY package.json package-lock.json* ./
 # Install ONLY production dependencies
 RUN npm install --omit=dev
 
-# Copy compiled code from builder
+# Copy compiled code and schema from builder
 COPY --from=builder /app/dist ./dist
-# Copy prisma schema from builder
 COPY --from=builder /app/prisma ./prisma
 
-# Generate Prisma client in the runtime stage to match the environment exactly
+# Generate Prisma client for the Debian environment
 RUN npx prisma generate
 
 EXPOSE 4000
