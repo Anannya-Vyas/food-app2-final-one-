@@ -44,7 +44,7 @@ router.get('/', async (req: Request, res: Response) => {
       _avg: { value: true },
       _count: true,
     }) : [];
-    const ratingMap = new Map(ratings.map(r => [r.recipeId, { avg: r._avg.value, count: r._count }]));
+    const ratingMap = new Map(ratings.map(r => [r.recipeId, { avg: (r._avg as any).value, count: (r as any)._count }]));
 
     const data = recipes.map(r => ({
       id: r.id,
@@ -55,8 +55,8 @@ router.get('/', async (req: Request, res: Response) => {
       flavorSpectrum: r.flavorSpectrum,
       prepTimeMins: r.prepTimeMins,
       dietaryTags: r.dietaryTags,
-      averageRating: ratingMap.get(r.id)?.avg ?? null,
-      ratingCount: ratingMap.get(r.id)?.count ?? 0,
+      averageRating: (ratingMap.get(r.id) as any)?.avg ?? null,
+      ratingCount: (ratingMap.get(r.id) as any)?.count ?? 0,
     }));
 
     res.json({ recipes: data, total, page, limit });
