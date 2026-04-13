@@ -21,7 +21,7 @@ interface Recipe {
 }
 
 // Dynamically import the map to avoid SSR issues
-const MapComponent = dynamic(() => import('../../../components/WorldMap'), { ssr: false, loading: () => (
+const MapComponent = dynamic(() => import('../../components/WorldMap'), { ssr: false, loading: () => (
   <div className="w-full h-full bg-stone-950 flex items-center justify-center">
     <div className="w-10 h-10 border-2 border-primary border-t-transparent rounded-full animate-spin" />
   </div>
