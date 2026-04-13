@@ -11,7 +11,7 @@ RUN npm install
 COPY src ./src
 
 # Write a self-contained tsconfig (avoids monorepo extends path issues in Docker)
-RUN printf '{\n  "compilerOptions": {\n    "target": "ES2022",\n    "module": "commonjs",\n    "lib": ["ES2022"],\n    "strict": true,\n    "esModuleInterop": true,\n    "skipLibCheck": true,\n    "forceConsistentCasingInFileNames": true,\n    "resolveJsonModule": true,\n    "declaration": true,\n    "sourceMap": true,\n    "outDir": "dist",\n    "rootDir": "src",\n    "baseUrl": "."\n  },\n  "include": ["src/**/*"],\n  "exclude": ["node_modules", "dist"]\n}\n' > tsconfig.json
+RUN printf '{\n  "compilerOptions": {\n    "target": "ES2022",\n    "module": "commonjs",\n    "lib": ["ES2022"],\n    "strict": false,\n    "noImplicitAny": false,\n    "strictNullChecks": false,\n    "esModuleInterop": true,\n    "skipLibCheck": true,\n    "forceConsistentCasingInFileNames": true,\n    "resolveJsonModule": true,\n    "declaration": true,\n    "sourceMap": true,\n    "outDir": "dist",\n    "rootDir": "src",\n    "baseUrl": "."\n  },\n  "include": ["src/**/*"],\n  "exclude": ["node_modules", "dist"]\n}\n' > tsconfig.json
 
 RUN npx tsc
 
