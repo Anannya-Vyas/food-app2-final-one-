@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy package files and install all dependencies (including devDependencies for tsc)
 COPY package.json package-lock.json* ./
-RUN npm ci
+RUN npm install
 
 # Copy source
 COPY src ./src
