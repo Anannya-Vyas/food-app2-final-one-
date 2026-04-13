@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import api from '../../../../lib/api';
+import api from '../../../lib/api';
 
 interface RecipeTag { id: string; title: string; region?: { name: string } }
 
@@ -262,3 +262,4 @@ export default function CreatePostPage() {
     </div>
   );
 }
+

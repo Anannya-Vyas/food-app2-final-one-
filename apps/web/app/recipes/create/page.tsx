@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import api from '../../../../lib/api';
+import api from '../../../lib/api';
 
 const DIETARY_TAGS = [
   'Vegan', 'Vegetarian', 'Gluten-free', 'Dairy-free',
@@ -238,3 +238,4 @@ export default function RecipeCreatePage() {
     </div>
   );
 }
+
